@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shalom | System Solutions</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+
+
+<!-- NAV -->
+<div id="nav">
+  <a id="logo" href="#"><img src="images/shalom.png" alt="Shalom Logo"></a>
+  <a href="#services">Services</a>
+  <a href="#products">Products</a>
+  <a href="#contact">Contact US</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Glow background -->
+ <div class="glow-circle glow-1"></div>
+<div class="glow-circle glow-2"></div>
+<div class="glow-circle glow-3"></div>
+  
+  <!-- LEFT CONTENT -->
+  <div class="hero-content">
+    <h1>Shalom System Solutions</h1>
+    <h2>Complete Hardware Solutions</h2>
+    <p>Under High Quality & Services</p>
+    <br>
+
+    <div class="cta-wrapper">
+  <button class="enquire-btn" onclick="href='#services'">
+    <span class="btn-text">Visit now</span>
+    <span class="btn-arrow">➜</span>
+  </button>
+</div>
+
+  </div>
+
+  <!-- RIGHT VIDEO -->
+  <div class="laptop-wrapper">
+  <div class="laptop">
+    <div class="laptop-screen">
+      <video autoplay muted loop playsinline>
+        <source src="images/intro.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="laptop-base"></div>
+  </div>
+</div>
+
+
+</section>
+
+
+<section class="about" id="about">
+  <div class="about-container">
+
+    <h2>About Us</h2>
+
+    <p class="about-intro">
+      <strong>Shalom System Solutions</strong> is a trusted system service provider based in
+      <strong>Coimbatore</strong>, delivering reliable computer sales, repairs, and genuine
+      software solutions for individuals and businesses.
+    </p>
+
+    <div class="about-cards">
+
+      <!-- CARD 1 -->
+      <article class="about-card">
+        <div class="about-text">
+          <h3>Lijo Daniel D</h3>
+          <span class="role">Founder · Shalom System Solutions</span>
+          <p>
+            Leads business operations, customer engagement, and ensures quality-driven
+            IT services with transparent pricing and genuine products.
+          </p>
+          <span class="location">📍 Coimbatore</span>
+        </div>
+
+        <div class="about-image">
+          <img src="images/lijo.jpeg" alt="Lijo Daniel D">
+        </div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="about-card">
+        <div class="about-text">
+          <h3>David Willam S</h3>
+          <span class="role">Technical Specialist</span>
+          <p>
+            Specialist in diagnostics, OS installation, lifetime activation,
+            antivirus deployment, and system performance optimization.
+          </p>
+          <span class="location">📍 Coimbatore</span>
+        </div>
+
+        <div class="about-image">
+          <img src="images/david.jpeg" alt="David Willam S">
+        </div>
+      </article>
+
+    </div>
+
+    <p class="about-summary">
+      We specialize in laptops, desktops, operating systems, genuine licenses,
+      antivirus solutions, and long-term performance optimization.
+    </p>
+     <p class="about-summary">
+      From <strong>new & used laptop sales</strong> to <strong>Windows and MS Office lifetime licenses</strong>, 
+      from <strong>hardware upgrades</strong> to <strong>data recovery and network setup</strong>, 
+      we ensure every customer gets professional service with honest guidance.
+    </p>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+      <div class="marquee-track">
+        <span class="badge genune">✔ Genuine Software</span>
+        <span class="badge life">✔ Lifetime Activation</span>
+        <span class="badge fast">✔ Fast Service</span>
+        <span class="badge trust">✔ Trusted Support</span>
+
+        <!-- duplicate -->
+        <span class="badge genune">✔ Genuine Software</span>
+        <span class="badge life">✔ Lifetime Activation</span>
+        <span class="badge fast">✔ Fast Service</span>
+        <span class="badge trust">✔ Trusted Support</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  const laptop = document.querySelector('.laptop');
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          laptop.classList.add('show');
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(laptop);
+    window.addEventListener("load", () => {
+    document.querySelector(".hero").classList.add("animate");
+  });
+</script>
+
+
+</body>
+</html>
