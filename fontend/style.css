@@ -358,7 +358,7 @@ footer p {
 
 @media (max-width: 900px) {
   #nav {
-    width: 90%;
+    width: 85%;
     padding: 0 20px;
   }
   
@@ -392,13 +392,13 @@ footer p {
 
 @media (max-width: 768px) {
   #nav {
-    width: 95%;
+    width: 85%;
     height: 60px;
     top: 20px;
   }
   
   #nav a {
-    font-size: 14px;
+    font-size: 13px;
     padding: 5px 8px;
   }
   
