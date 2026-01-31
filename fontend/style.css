@@ -1874,5 +1874,10 @@ footer p {
 .footer-links{
   display: none;
 }
+.footer-socials{
+  display: flex;
+  margin-right: 10px;
+  gap:15px;
+}
 
 }
