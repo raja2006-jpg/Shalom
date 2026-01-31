@@ -1826,7 +1826,7 @@ footer p {
   .footer-brand {
     grid-column: span 2;
     text-align: center;
-    margin-left:20px;
+    margin-left:7px;
   }
 
   .footer-socials {
