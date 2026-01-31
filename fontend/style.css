@@ -1821,15 +1821,17 @@ footer p {
   }
   .site-footer {
   border-radius:  50px 50px 0 0;
+  }
 
   .footer-brand {
     grid-column: span 2;
     text-align: center;
+    margin-left:20px;
   }
 
   .footer-socials {
   
-    gap:10px;
+    gap:20px;
   }
   .footer-services{
   display: none;
@@ -1837,14 +1839,14 @@ footer p {
 .footer-links{
   display: none;
 }
-.footer-socials{
+/* .footer-socials{
   display: flex;
   margin-right: 50px;
   
   
   gap:20px;
   
-}
+} */
 
 .footer-contact{
   margin-top: 30px;  
