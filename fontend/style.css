@@ -1828,10 +1828,8 @@ footer p {
   }
 
   .footer-socials {
-    justify-content: center;
-    margin-left: 60px;
-    margin-top: 30px;
-    gap:25px;
+  
+    gap:10px;
   }
   .footer-services{
   display: none;
