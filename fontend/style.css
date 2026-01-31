@@ -1845,7 +1845,7 @@ footer p {
 
 .footer-contact{
   margin-top: 30px;  
-  margin-left: 55px;
+  margin-left: 20px;
 }
 
 .footer-bottom {
@@ -1874,10 +1874,5 @@ footer p {
 .footer-links{
   display: none;
 }
- .footer-socials {
-    justify-content: center;
-    margin-left: 60px;
-    margin-top: 30px;
-    gap:25px;
-  }
+
 }
