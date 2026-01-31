@@ -1840,6 +1840,7 @@ footer p {
 .footer-socials{
   display: flex;
   margin-right:0px;
+  padding-right:50px;
   gap:20px;
   
 }
@@ -1877,6 +1878,7 @@ footer p {
 .footer-socials{
   display: flex;
   margin-right: 0px;
+  padding-right:50px;
   gap: 20px;
 }
 }
@@ -1902,6 +1904,7 @@ footer p {
 .footer-socials{
   display: flex;
   margin-right: 0px;
+  padding-right:50px;
   gap: 20px;
 }
 
