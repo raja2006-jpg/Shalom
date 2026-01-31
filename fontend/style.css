@@ -1832,6 +1832,7 @@ footer p {
   .footer-socials {
   
     gap:20px;
+    margin-left:50px;
   }
   .footer-services{
   display: none;
