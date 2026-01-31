@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products | Shalom System Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Products page styles -->
+  <link rel="stylesheet" href="products.css">
+</head>
+
+<body>
+
+<!-- NAV -->
+<div id="nav">
+  <a id="logo" href="index.html">
+    <img src="images/shalom.png" alt="Shalom Logo">
+  </a>
+  <a href="index.html#services">Services</a>
+  <a href="products.html" class="active">Products</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- HEADER -->
+<section class="products-hero">
+  <h1>Our Products</h1>
+  <p>Browse available products and send an inquiry instantly</p>
+</section>
+
+<!-- SEARCH -->
+<div class="products-search-wrapper">
+  <input
+    id="productSearch"
+    type="text"
+    placeholder="Search products..."
+  >
+</div>
+
+<!-- PRODUCTS GRID -->
+<section class="products-wrapper">
+  <div id="productsGrid" class="products-grid"></div>
+</section>
+
+<script>
+/* ================= PRODUCTS PAGE SCRIPT ================= */
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+const grid = document.getElementById("productsGrid");
+const search = document.getElementById("productSearch");
+
+/* RENDER */
+function renderProducts(list = products) {
+  if (!list.length) {
+    grid.innerHTML = `<p class="empty-text">No products available</p>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(p => `
+    <div class="product-card">
+      <img src="${p.image}" alt="${p.name}">
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <p class="type">${p.type}</p>
+        <p class="desc">${p.description}</p>
+
+        <div class="card-footer">
+          <span class="price">₹${p.price}</span>
+          <button onclick='selectProduct(${JSON.stringify(p).replace(/'/g,"&#39;")})'>
+            Enquire →
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+renderProducts();
+
+/* SEARCH */
+search.addEventListener("input", e => {
+  const q = e.target.value.toLowerCase();
+  renderProducts(products.filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    p.type.toLowerCase().includes(q) ||
+    p.description.toLowerCase().includes(q)
+  ));
+});
+
+/* SELECT PRODUCT → GO TO CONTACT */
+function selectProduct(product) {
+  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  window.location.href = "index.html#contact";
+}
+</script>
+
+</body>
+</html>

@@ -1519,3 +1519,128 @@ footer p {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+
+/* CONTACT */
+.contact-section {
+  padding: 120px 30px;
+  max-width: 600px;
+  margin: auto;
+}
+.contact-form {
+  display: grid;
+  gap: 14px;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+.contact-form button {
+  padding: 16px;
+  background: linear-gradient(90deg,#8FBC36,#6aa6ff);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+
+
+
+
+/* ================= PRODUCTS ================= */
+.products-section {
+  padding: 120px 30px;
+  background:
+    radial-gradient(circle at top left, rgba(143,188,54,0.15), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(106,166,255,0.15), transparent 45%),
+    linear-gradient(120deg, #ffffff, #f6fff2);
+}
+
+.products-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.products-title {
+  text-align: center;
+  font-size: 44px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #44a016, #6aa6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.products-subtitle {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.product-search {
+  width: 200%;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  display: block;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  padding: 20px;
+  cursor: pointer;
+  transition: transform .3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.product-card h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.product-card span {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #8FBC36;
+}
+
+.empty-text {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #777;
+  font-size: 18px;
+}
+
