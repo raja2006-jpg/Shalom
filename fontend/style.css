@@ -1839,7 +1839,8 @@ footer p {
 }
 .footer-socials{
   display: flex;
-  margin-right:0px;
+  margin-right: 50px;
+  
   
   gap:20px;
   
