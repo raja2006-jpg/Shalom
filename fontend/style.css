@@ -1683,8 +1683,8 @@ footer p {
 
 /* BRAND */
 .footer-logo {
-  width: 150px;
-  margin-bottom: 18px;
+  width: 250px;
+  margin-bottom:0px;
 }
 
 .footer-brand h2 {
