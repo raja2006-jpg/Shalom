@@ -1828,6 +1828,9 @@ footer p {
     text-align: center;
     margin-left:7px;
   }
+  .footer-brand img{
+    margin-left:10px;
+  }
 
   .footer-socials {
   
