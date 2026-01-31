@@ -1832,7 +1832,7 @@ footer p {
   .footer-socials {
   
     gap:20px;
-    margin-left:20px;
+    margin-left:10px;
   }
   .footer-services{
   display: none;
