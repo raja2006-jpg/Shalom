@@ -1440,7 +1440,7 @@ footer p {
 }
 
 .map-box:hover {
-  transform: translateY(-6px);
+  transform:scale(0.99);
 }
 
 .map-box img {
@@ -1489,7 +1489,7 @@ footer p {
 }
 
 .gallery-item:hover {
-  transform: translateY(-5px);
+  transform: scale(0.96);
 }
 
 .gallery-item img {
@@ -1814,10 +1814,13 @@ footer p {
 }
 
 /* RESPONSIVE */
+
 @media (max-width: 900px) {
   .footer-inner {
     grid-template-columns: 1fr 1fr;
   }
+  .site-footer {
+  border-radius:  50px 50px 0 0;
 
   .footer-brand {
     grid-column: span 2;
@@ -1828,7 +1831,7 @@ footer p {
     justify-content: center;
     margin-left: 60px;
     margin-top: 30px;
-    gap:20px;
+    gap:25px;
   }
   .footer-services{
   display: none;
@@ -1844,6 +1847,7 @@ footer p {
 
 .footer-contact{
   margin-top: 30px;  
+  margin-left: 55px;
 }
 
 .footer-bottom {
@@ -1851,6 +1855,7 @@ footer p {
     gap: 8px;
     text-align: center;
   }
+}
 }
 
 
@@ -1871,4 +1876,10 @@ footer p {
 .footer-links{
   display: none;
 }
+ .footer-socials {
+    justify-content: center;
+    margin-left: 60px;
+    margin-top: 30px;
+    gap:25px;
+  }
 }
