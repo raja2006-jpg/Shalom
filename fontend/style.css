@@ -1875,7 +1875,8 @@ footer p {
   display: none;
 }
 .footer-socials{
-  gap:20px;
+  display: flex;
+  gap: 25px;
 }
 
 }
