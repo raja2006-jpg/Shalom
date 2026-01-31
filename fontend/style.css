@@ -1839,7 +1839,8 @@ footer p {
 }
 .footer-socials{
   display: flex;
-  margin-right: 60px;
+  margin-right:0px;
+  gap:20px;
   
 }
 
@@ -1853,6 +1854,30 @@ footer p {
     gap: 8px;
     text-align: center;
   }
+}
+}
+
+@media (max-width:700px){
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  .footer-services{
+  display: none;
+}
+.footer-links{
+  display: none;
+}
+.footer-socials{
+  display: flex;
+  margin-right: 0px;
+  gap: 20px;
 }
 }
 
@@ -1876,7 +1901,8 @@ footer p {
 }
 .footer-socials{
   display: flex;
-  gap: 25px;
+  margin-right: 0px;
+  gap: 20px;
 }
 
 }
