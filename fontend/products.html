@@ -63,7 +63,7 @@ function renderProducts(list = products) {
   }
 
   grid.innerHTML = list.map(p => `
-    <div class="product-card">
+    <div class="product-card" onclick='selectProduct(${JSON.stringify(p).replace(/'/g,"&#39;")})'>
       <img src="${p.image}" alt="${p.name}">
       <div class="card-body">
         <h3>${p.name}</h3>

@@ -345,22 +345,32 @@
 
   <!-- Selected Product Display -->
   <div id="selectedProductDisplay" class="selected-product-box" style="display:none;">
+  <div style="display:flex; gap:16px; align-items:center;">
+    <img id="selectedProductImage"
+         src=""
+         alt="Product Image"
+         style="width:90px;height:90px;object-fit:cover;border-radius:12px;border:1px solid #8fbc3653">
+
     <div>
-      <p style="font-size: 14px; color: #666; margin-bottom: 5px;">Product Selected:</p>
-      <h3 id="selectedProductName" style="font-size: 22px; margin-bottom: 5px;"></h3>
-      <p id="selectedProductPrice" style="color: #8FBC36; font-weight: 600;"></p>
+      <p style="font-size: 14px; color: #666;">Product Selected</p>
+      <h3 id="selectedProductName"></h3>
+      <p id="selectedProductPrice" style="color:#8FBC36;font-weight:700;"></p>
     </div>
-    <button onclick="clearSelectedProduct()" style="background: #e53935; padding: 8px 16px; border-radius: 8px; color: white; border: none; cursor: pointer;">
-      ✕ Remove
-    </button>
   </div>
+
+  <button onclick="clearSelectedProduct()"
+    style="background:#e5383515;color:#ff0101;border:none;border-radius:8px;padding:8px 16px;cursor:pointer">
+    ✕ 
+  </button>
+</div>
+
 
   <form id="contactForm" class="contact-form">
     <input id="cname" placeholder="Your Name *" required>
     <input id="cphone" placeholder="Phone Number *" required>
     <input id="cproduct" placeholder="Selected Product" readonly style="background: #f5f5f5;">
     <textarea id="cmessage" placeholder="Your Message (Optional)"></textarea>
-    <button type="submit">Send Inquiry</button>
+    <button type="submit">Send </button>
   </form>
 
   <div id="successMessage" class="success-message" style="display:none;">
@@ -437,6 +447,80 @@
   </div>
 </section>
 
+
+<!-- ================= CORPORATE FOOTER ================= -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <img src="images/shalom.png" alt="Shalom System Solutions" class="footer-logo">
+
+      <h2>Your trusted partner for computer sales,<br>built on quality service</h2>
+
+      <p class="footer-tagline">
+        Complete Hardware & Software Solutions<br>
+        Under High Quality & Services
+      </p>
+
+      <div class="footer-socials">
+        <a href="#"><img src="images/insta.png" alt="Instagram"></a>
+        <a href="#"><img  class="facebook" src="images/facebooks.png" alt="Facebook"></a>
+        <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+        <a href="#"><img  class="whattsapp"  src="images/whattsapp.png" alt="WhatsApp"></a>
+      </div>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="footer-services">
+      <h3>Services</h3>
+      <ul>
+        <li>Hardware Solutions</li>
+        <li>Software Installation</li>
+        <li>Networking</li>
+        <li>IT Support</li>
+        <li>Consulting</li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-contact">
+      <h3>Contact</h3>
+
+      <p>📍   Kannampalayam,Sulur, Coimbatore</p>
+      <p> 📞 <a href="tel:+919629627339">+91 96296 27339</a></p>
+      <p> 📩<a href="mailto:shalomsystemsolutions@gmail.com"> shalomsystemsolutions@gmail.com</a></p>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <span>© 2026 Shalom System Solutions</span>
+    <span>
+      Website by
+      <a id="nexlet" href="https://nexlet.vercel.app/" target="_blank">
+        <strong><span>NeX</span><span id="let">Let</span></strong>
+      </a>
+    </span>
+  </div>
+</footer>
+
+
+
+
 <script>
 /* ================= HERO ANIMATION ================= */
 document.addEventListener("DOMContentLoaded", () => {
@@ -498,19 +582,17 @@ if (productSearch) {
 /* SELECT PRODUCT */
 function selectProduct(product) {
   selectedProduct = product;
-  
-  // Update form
+
   document.getElementById('cproduct').value = product.name;
-  
-  // Show selected product display
-  const display = document.getElementById('selectedProductDisplay');
   document.getElementById('selectedProductName').textContent = product.name;
   document.getElementById('selectedProductPrice').textContent = `₹${product.price}`;
-  display.style.display = 'flex';
-  
-  // Scroll to contact
+  document.getElementById('selectedProductImage').src = product.image;
+
+  document.getElementById('selectedProductDisplay').style.display = 'flex';
+
   document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
 }
+
 
 /* CLEAR SELECTED PRODUCT */
 function clearSelectedProduct() {
@@ -558,9 +640,21 @@ contactForm.addEventListener("submit", e => {
 const savedProduct = localStorage.getItem("selectedProduct");
 if (savedProduct) {
   const product = JSON.parse(savedProduct);
+
+  selectedProduct = product; // 🔥 IMPORTANT
+
   document.getElementById('cproduct').value = product.name;
+  document.getElementById('selectedProductName').textContent = product.name;
+  document.getElementById('selectedProductPrice').textContent = `₹${product.price}`;
+  document.getElementById('selectedProductImage').src = product.image;
+
+  document.getElementById('selectedProductDisplay').style.display = 'flex';
+
   localStorage.removeItem("selectedProduct");
+
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
 }
+
 
 </script>
 
