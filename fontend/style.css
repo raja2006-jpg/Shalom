@@ -1815,7 +1815,7 @@ footer p {
 
 /* RESPONSIVE */
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
   .footer-inner {
     grid-template-columns: 1fr 1fr;
   }
