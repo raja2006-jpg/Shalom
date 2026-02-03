@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 export default function Services() {
   return (
     <section className="services" id="services">
