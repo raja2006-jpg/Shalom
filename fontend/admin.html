@@ -204,260 +204,205 @@
 </div>
 
 <script>
-let products = JSON.parse(localStorage.getItem("products")) || [];
-let inquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
+/* ================= API (LOCAL DEV ONLY) ================= */
+const API = "http://localhost:5000";
 
+/* ================= DOM ================= */
+const adminProducts = document.getElementById("adminProducts");
+const adminInquiries = document.getElementById("adminInquiries");
+
+/* ================= STATE ================= */
+let products = [];
+let inquiries = [];
+let formVisible = true;
+
+/* ================= LOGIN ================= */
 function login() {
-  const username = document.getElementById('user').value.trim();
-  const password = document.getElementById('pass').value.trim();
-  const errMsg = document.getElementById('err');
-
-  if (username === "shalom" && password === "shalom2026") {
-    document.getElementById('loginBox').classList.add("hidden");
-    document.getElementById('dashboard').classList.remove("hidden");
-    updateStats();
-    renderAdmin();
+  if (user.value === "shalom" && pass.value === "shalom2026") {
+    loginBox.classList.add("hidden");
+    dashboard.classList.remove("hidden");
+    err.style.display = "none";
+    loadData();
   } else {
-    errMsg.textContent = "❌ Invalid username or password";
-    errMsg.style.display = "block";
-    setTimeout(() => { errMsg.style.display = "none"; }, 3000);
+    err.textContent = "❌ Invalid credentials";
+    err.style.display = "block";
   }
 }
 
 function logout() {
-  if (confirm("Are you sure you want to logout?")) location.reload();
+  location.reload();
 }
 
+/* ================= TABS ================= */
 function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
-  document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-  document.getElementById(tab + 'Tab').classList.add('active');
+  productsTab.classList.remove("active");
+  inquiriesTab.classList.remove("active");
+  tabProducts.classList.remove("active");
+  tabInquiries.classList.remove("active");
+
+  if (tab === "products") {
+    productsTab.classList.add("active");
+    tabProducts.classList.add("active");
+  } else {
+    inquiriesTab.classList.add("active");
+    tabInquiries.classList.add("active");
+  }
 }
 
-function toggleAddForm() {
-  const form = document.getElementById('addProductForm');
-  const btn = document.getElementById('toggleText');
-  if (form.style.display === 'none') {
-    form.style.display = 'block';
-    btn.textContent = 'Hide Form';
-  } else {
-    form.style.display = 'none';
-    btn.textContent = 'Show Form';
+/* ================= LOAD DATA ================= */
+async function loadData() {
+  try {
+    const productRes = await fetch(`${API}/api/products`);
+    const inquiryRes = await fetch(`${API}/api/inquiries`);
+
+    if (!productRes.ok || !inquiryRes.ok) {
+      throw new Error("Backend not reachable");
+    }
+
+    products = await productRes.json();
+    inquiries = await inquiryRes.json();
+
+    updateStats();
+    renderProducts(products);
+    renderInquiries();
+  } catch (err) {
+    console.error(err);
+    alert("❌ Backend not running. Start server.js");
   }
+}
+
+/* ================= STATS ================= */
+function updateStats() {
+  productCount.textContent = products.length;
+  inquiryCount.textContent = inquiries.length;
+  availableCount.textContent =
+    products.filter(p => p.availability === "Available").length;
+}
+
+/* ================= PRODUCTS ================= */
+function renderProducts(list) {
+  if (!list.length) {
+    adminProducts.innerHTML = "<p>No products added yet</p>";
+    return;
+  }
+
+  adminProducts.innerHTML = list.map(p => `
+    <div class="product-item">
+      <img src="${p.image}" alt="">
+      <h4>${p.name}</h4>
+      <span>₹${p.price}</span>
+      <button onclick="deleteProduct('${p._id}')">🗑️</button>
+    </div>
+  `).join("");
+}
+
+function filterProducts() {
+  const q = productSearch.value.toLowerCase();
+  renderProducts(
+    products.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.type.toLowerCase().includes(q)
+    )
+  );
+}
+
+/* ================= ADD PRODUCT ================= */
+function toggleAddForm() {
+  formVisible = !formVisible;
+  addProductForm.style.display = formVisible ? "block" : "none";
+  toggleText.textContent = formVisible ? "Hide Form" : "Show Form";
 }
 
 function handleFileSelect(input) {
   const file = input.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      document.getElementById('previewImg').src = e.target.result;
-      document.getElementById('imagePreview').classList.remove('hidden');
-      document.querySelector('.file-upload-content').style.display = 'none';
-    };
-    reader.readAsDataURL(file);
-  }
-}
+  if (!file) return;
 
-function clearImage() {
-  document.getElementById('pimage').value = '';
-  document.getElementById('imagePreview').classList.add('hidden');
-  document.querySelector('.file-upload-content').style.display = 'flex';
-}
-
-function addProduct() {
-  const name = document.getElementById('pname').value.trim();
-  const type = document.getElementById('ptype').value.trim();
-  const price = document.getElementById('pprice').value.trim();
-  const desc = document.getElementById('pdesc').value.trim();
-  const availability = document.getElementById('pavailability').value;
-  const file = document.getElementById('pimage').files[0];
-
-  if (!name || !type || !price || !desc) {
-    alert("⚠️ Please fill all required fields");
-    return;
-  }
-
-  if (!file) {
-    alert("⚠️ Please select a product image");
+  if (file.size > 1024 * 1024 * 1.5) {
+    alert("❌ Image too large (max 1.5MB)");
+    input.value = "";
     return;
   }
 
   const reader = new FileReader();
   reader.onload = () => {
-    products.push({
-      id: Date.now(),
-      name: name,
-      type: type,
-      price: price,
-      description: desc,
-      availability: availability,
-      image: reader.result,
-      createdAt: new Date().toISOString()
-    });
-
-    localStorage.setItem("products", JSON.stringify(products));
-    
-    document.getElementById('pname').value = "";
-    document.getElementById('ptype').value = "";
-    document.getElementById('pprice').value = "";
-    document.getElementById('pdesc').value = "";
-    document.getElementById('pavailability').value = "Available";
-    clearImage();
-
-    updateStats();
-    renderAdmin();
-    alert("✅ Product added successfully!");
+    previewImg.src = reader.result;
+    imagePreview.classList.remove("hidden");
   };
   reader.readAsDataURL(file);
 }
 
-function deleteProduct(id) {
-  if (!confirm("Are you sure you want to delete this product?")) return;
-  products = products.filter(p => p.id !== id);
-  localStorage.setItem("products", JSON.stringify(products));
-  updateStats();
-  renderAdmin();
+function clearImage() {
+  pimage.value = "";
+  imagePreview.classList.add("hidden");
 }
 
-function editProduct(id) {
-  const product = products.find(p => p.id === id);
-  const name = prompt("Product Name:", product.name);
-  if (!name) return;
-  const type = prompt("Product Type:", product.type);
-  if (!type) return;
-  const price = prompt("Price (₹):", product.price);
-  if (!price) return;
-  const desc = prompt("Description:", product.description);
-  if (!desc) return;
-  const availability = confirm("Is this product available in stock?") ? "Available" : "Out of Stock";
-
-  product.name = name;
-  product.type = type;
-  product.price = price;
-  product.description = desc;
-  product.availability = availability;
-  
-  localStorage.setItem("products", JSON.stringify(products));
-  updateStats();
-  renderAdmin();
-  alert("✅ Product updated successfully!");
-}
-
-function clearInquiries() {
-  if (!confirm("⚠️ Clear ALL inquiries? This action cannot be undone.")) return;
-  inquiries = [];
-  localStorage.setItem("inquiries", JSON.stringify(inquiries));
-  updateStats();
-  renderAdmin();
-}
-
-function deleteInquiry(id) {
-  if (!confirm("Delete this inquiry?")) return;
-  inquiries = inquiries.filter(i => i.id !== id);
-  localStorage.setItem("inquiries", JSON.stringify(inquiries));
-  updateStats();
-  renderAdmin();
-}
-
-function filterProducts() {
-  const searchTerm = document.getElementById('productSearch').value.toLowerCase();
-  const productCards = document.querySelectorAll('.product-item');
-  productCards.forEach(card => {
-    const text = card.textContent.toLowerCase();
-    card.style.display = text.includes(searchTerm) ? 'flex' : 'none';
-  });
-}
-
-function updateStats() {
-  document.getElementById('productCount').textContent = products.length;
-  document.getElementById('inquiryCount').textContent = inquiries.length;
-  document.getElementById('availableCount').textContent = products.filter(p => p.availability === 'Available').length;
-}
-
-function renderAdmin() {
-  const adminProducts = document.getElementById('adminProducts');
-  const adminInquiries = document.getElementById('adminInquiries');
-
-  if (products.length === 0) {
-    adminProducts.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-icon">📦</div>
-        <h4>No products yet</h4>
-        <p>Add your first product using the form above</p>
-      </div>`;
-  } else {
-    adminProducts.innerHTML = products.map(p => `
-      <div class="product-item">
-        <div class="product-image">
-          <img src="${p.image}" alt="${p.name}">
-          <span class="badge ${p.availability === 'Available' ? 'badge-success' : 'badge-danger'}">
-            ${p.availability === 'Available' ? '✅' : '❌'} ${p.availability}
-          </span>
-        </div>
-        <div class="product-details">
-          <h4>${p.name}</h4>
-          <p class="product-type">📋 ${p.type}</p>
-          <p class="product-desc">${p.description}</p>
-          <div class="product-footer">
-            <span class="product-price">₹${p.price}</span>
-            <div class="product-actions">
-              <button onclick="editProduct(${p.id})" class="btn-edit">✏️ Edit</button>
-              <button onclick="deleteProduct(${p.id})" class="btn-delete">🗑️ Delete</button>
-            </div>
-          </div>
-        </div>
-      </div>`).join('');
+async function addProduct() {
+  if (!pimage.files[0]) {
+    alert("❌ Select image");
+    return;
   }
 
-  if (inquiries.length === 0) {
-    adminInquiries.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-icon">📧</div>
-        <h4>No inquiries yet</h4>
-        <p>Customer inquiries will appear here</p>
-      </div>`;
-  } else {
-    const sortedInquiries = [...inquiries].sort((a, b) => b.id - a.id);
-    adminInquiries.innerHTML = sortedInquiries.map(i => `
-      <div class="inquiry-item">
-        <div class="inquiry-header">
-          <div class="inquiry-user">
-            <div class="user-avatar">${i.name.charAt(0).toUpperCase()}</div>
-            <div class="user-info">
-              <h4>${i.name}</h4>
-              <p class="inquiry-phone">📞 ${i.phone}</p>
-            </div>
-          </div>
-          <div class="inquiry-meta">
-            <span class="inquiry-time">🕐 ${new Date(i.timestamp || i.id).toLocaleDateString()} ${new Date(i.timestamp || i.id).toLocaleTimeString()}</span>
-            <button onclick="deleteInquiry(${i.id})" class="btn-delete-inquiry">🗑️</button>
-          </div>
-        </div>
-        ${i.productDetails ? `
-          <div class="inquiry-product">
-            <div class="product-mini">
-              <img src="${i.productDetails.image}" alt="${i.productDetails.name}">
-              <div class="product-mini-info">
-                <h5>📦 Interested Product</h5>
-                <p><strong>${i.productDetails.name}</strong></p>
-                <p class="mini-price">₹${i.productDetails.price} • ${i.productDetails.type}</p>
-              </div>
-            </div>
-          </div>` : i.product ? `
-          <div class="inquiry-product-simple">
-            <strong>📦 Product:</strong> ${i.product}
-          </div>` : ''}
-        ${i.message ? `
-          <div class="inquiry-message">
-            <strong>💬 Message:</strong>
-            <p>${i.message}</p>
-          </div>` : ''}
-      </div>`).join('');
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const res = await fetch(`${API}/api/products`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: pname.value,
+        type: ptype.value,
+        price: Number(pprice.value),
+        description: pdesc.value,
+        availability: pavailability.value,
+        image: reader.result
+      })
+    });
+
+    if (!res.ok) {
+      alert("❌ Failed to add product");
+      return;
+    }
+
+    pname.value = ptype.value = pprice.value = pdesc.value = "";
+    pimage.value = "";
+    imagePreview.classList.add("hidden");
+
+    await loadData();
+    alert("✅ Product added successfully");
+  };
+
+  reader.readAsDataURL(pimage.files[0]);
+}
+
+async function deleteProduct(id) {
+  if (!confirm("Delete product?")) return;
+  await fetch(`${API}/api/products/${id}`, { method: "DELETE" });
+  loadData();
+}
+
+/* ================= INQUIRIES ================= */
+function renderInquiries() {
+  if (!inquiries.length) {
+    adminInquiries.innerHTML = "<p>No inquiries yet</p>";
+    return;
   }
+
+  adminInquiries.innerHTML = inquiries.map(i => `
+    <div class="inquiry-item">
+      <h4>${i.name} – ${i.phone}</h4>
+      <p><b>Product:</b> ${i.product || "-"}</p>
+      <p>${i.message || ""}</p>
+    </div>
+  `).join("");
+}
+
+async function clearInquiries() {
+  if (!confirm("Clear all inquiries?")) return;
+  await fetch(`${API}/api/inquiries`, { method: "DELETE" });
+  loadData();
 }
 </script>
+
+
 
 </body>
 </html>

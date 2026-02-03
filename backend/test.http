@@ -1,0 +1,16 @@
+### Test server
+GET http://localhost:5000/
+
+### Get products
+GET http://localhost:5000/api/products
+
+### Add inquiry
+POST http://localhost:5000/api/inquiries
+Content-Type: application/json
+
+{
+  "name": "Raja",
+  "phone": "9876543210",
+  "product": "SSD",
+  "message": "Need details"
+}

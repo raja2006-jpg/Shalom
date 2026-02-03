@@ -133,13 +133,13 @@
       <!-- CARD 3 -->
       <article class="about-card">
         <div class="about-text">
-          <h3>David Willam S</h3>
+          <h3>Paul R</h3>
           <span class="role">Technical Specialist</span>
           <p>Performance tuning & lifetime activation expert.</p>
           <span class="location">📍 Coimbatore</span>
         </div>
         <div class="about-image">
-          <img src="images/david.jpeg" alt="David">
+          <img src="images/paul.jpeg" alt="Paul">
         </div>
       </article>
     </div>
@@ -430,7 +430,7 @@
 
       <!-- GALLERY UNDER MAP -->
       <div class="map-gallery">
-        <div class="gallery-item">
+        <div class="gallery-item" onclick="window.location.href='products.html'">
           <img src="images/company 1.webp" alt="Work Image 1">
         </div>
         <div class="gallery-item">
@@ -467,7 +467,7 @@
         <a href="https://www.instagram.com/shalom_system_solution?igsh=cnFveGdtYXZha3ox"><img src="images/insta.png" alt="Instagram"></a>
         <a href="https://www.facebook.com/share/1BrxJdMQNn/"><img  class="facebook" src="images/facebookss.jpg" alt="Facebook"></a>
         <a href="https://www.linkedin.com/in/lijo-daniel-d-71a917327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="images/linkedin.png" alt="LinkedIn"></a>
-        <a href="https://wa.me/c/229080771383510"><img  class="whattsapp"  src="images/whattsapp.png" alt="WhatsApp"></a>
+        <a href="https://wa.me/message/N7HAWY2AXRH2O1"><img  class="whattsapp"  src="images/whattsapp.png" alt="WhatsApp"></a>
       </div>
     </div>
 
@@ -520,7 +520,6 @@
 
 
 
-
 <script>
 /* ================= HERO ANIMATION ================= */
 document.addEventListener("DOMContentLoaded", () => {
@@ -534,129 +533,79 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (hero) {
-    window.addEventListener("load", () => hero.classList.add("animate"));
+    hero.classList.add("animate");
   }
 
-  // Load products on page load
-  renderProducts();
+  /* 🔁 Restore product from products page */
+  const saved = sessionStorage.getItem("selectedProduct");
+  if (saved) {
+    applySelectedProduct(JSON.parse(saved));
+    sessionStorage.removeItem("selectedProduct");
+  }
 });
 
 /* ================= STATE ================= */
-let products = JSON.parse(localStorage.getItem("products")) || [];
-let inquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
 let selectedProduct = null;
+const ADMIN_WHATSAPP = "9629627339";
 
-/* ================= PRODUCTS ================= */
-const productsGrid = document.getElementById("productsGrid");
-const productSearch = document.getElementById("productSearch");
-
-function renderProducts(list = products) {
-  if (!productsGrid) return;
-
-  if (list.length === 0) {
-    productsGrid.innerHTML = `<p class="empty-text">No products available</p>`;
-    return;
-  }
-
-  productsGrid.innerHTML = list.map(p => `
-    <div class="product-card" onclick='selectProduct(${JSON.stringify(p).replace(/'/g, "&#39;")})'>
-      <img src="${p.image}" alt="${p.name}">
-      <h3>${p.name}</h3>
-      <p>${p.description}</p>
-      <span>₹${p.price}</span>
-    </div>
-  `).join("");
-}
-
-/* SEARCH */
-if (productSearch) {
-  productSearch.addEventListener("input", e => {
-    const q = e.target.value.toLowerCase();
-    renderProducts(products.filter(p =>
-      p.name.toLowerCase().includes(q) ||
-      p.description.toLowerCase().includes(q)
-    ));
-  });
-}
-
-/* SELECT PRODUCT */
-function selectProduct(product) {
+/* ================= APPLY PRODUCT ================= */
+function applySelectedProduct(product) {
   selectedProduct = product;
 
-  document.getElementById('cproduct').value = product.name;
-  document.getElementById('selectedProductName').textContent = product.name;
-  document.getElementById('selectedProductPrice').textContent = `₹${product.price}`;
-  document.getElementById('selectedProductImage').src = product.image;
+  document.getElementById("cproduct").value = product.name;
+  document.getElementById("selectedProductName").textContent = product.name;
+  document.getElementById("selectedProductPrice").textContent = `₹${product.price}`;
+  document.getElementById("selectedProductImage").src = product.image;
 
-  document.getElementById('selectedProductDisplay').style.display = 'flex';
-
-  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById("selectedProductDisplay").style.display = "flex";
+  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
 }
 
-
-/* CLEAR SELECTED PRODUCT */
+/* ================= CLEAR PRODUCT ================= */
 function clearSelectedProduct() {
   selectedProduct = null;
-  document.getElementById('cproduct').value = '';
-  document.getElementById('selectedProductDisplay').style.display = 'none';
+  document.getElementById("cproduct").value = "";
+  document.getElementById("selectedProductDisplay").style.display = "none";
 }
 
-/* CONTACT FORM */
-const contactForm = document.getElementById('contactForm');
-const successMessage = document.getElementById('successMessage');
+/* ================= CONTACT FORM ================= */
+const contactForm = document.getElementById("contactForm");
+const successMessage = document.getElementById("successMessage");
 
-contactForm.addEventListener("submit", e => {
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const inquiry = {
-    id: Date.now(),
-    name: document.getElementById('cname').value,
-    phone: document.getElementById('cphone').value,
-    product: selectedProduct ? selectedProduct.name : document.getElementById('cproduct').value,
-    productDetails: selectedProduct,
-    message: document.getElementById('cmessage').value,
-    timestamp: new Date().toISOString()
+    name: cname.value,
+    phone: cphone.value,
+    product: selectedProduct ? selectedProduct.name : "Not selected",
+    message: cmessage.value
   };
 
-  inquiries.push(inquiry);
-  localStorage.setItem("inquiries", JSON.stringify(inquiries));
+  /* 1️⃣ SAVE TO BACKEND */
+  await fetch("http://localhost:5000/api/inquiries", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(inquiry)
+  });
 
-  // Show success message
-  contactForm.style.display = 'none';
-  successMessage.style.display = 'block';
-  document.getElementById('selectedProductDisplay').style.display = 'none';
+  
 
-  // Reset after 3 seconds
+  /* 3️⃣ UI FEEDBACK */
+  contactForm.style.display = "none";
+  successMessage.style.display = "block";
+  document.getElementById("selectedProductDisplay").style.display = "none";
+
   setTimeout(() => {
     contactForm.reset();
-    contactForm.style.display = 'grid';
-    successMessage.style.display = 'none';
+    contactForm.style.display = "grid";
+    successMessage.style.display = "none";
     selectedProduct = null;
   }, 3000);
 });
-
-
-/* AUTO LOAD SELECTED PRODUCT */
-const savedProduct = localStorage.getItem("selectedProduct");
-if (savedProduct) {
-  const product = JSON.parse(savedProduct);
-
-  selectedProduct = product; // 🔥 IMPORTANT
-
-  document.getElementById('cproduct').value = product.name;
-  document.getElementById('selectedProductName').textContent = product.name;
-  document.getElementById('selectedProductPrice').textContent = `₹${product.price}`;
-  document.getElementById('selectedProductImage').src = product.image;
-
-  document.getElementById('selectedProductDisplay').style.display = 'flex';
-
-  localStorage.removeItem("selectedProduct");
-
-  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-}
-
-
 </script>
+
+
 
 </body>
 </html>

@@ -48,22 +48,28 @@
 </section>
 
 <script>
-/* ================= PRODUCTS PAGE SCRIPT ================= */
+/* ================= PRODUCTS PAGE ================= */
 
-let products = JSON.parse(localStorage.getItem("products")) || [];
-
+let products = [];
 const grid = document.getElementById("productsGrid");
 const search = document.getElementById("productSearch");
 
+/* FETCH PRODUCTS */
+async function loadProducts() {
+  const res = await fetch("http://localhost:5000/api/products");
+  products = await res.json();
+  renderProducts(products);
+}
+
 /* RENDER */
-function renderProducts(list = products) {
+function renderProducts(list) {
   if (!list.length) {
     grid.innerHTML = `<p class="empty-text">No products available</p>`;
     return;
   }
 
   grid.innerHTML = list.map(p => `
-    <div class="product-card" onclick='selectProduct(${JSON.stringify(p).replace(/'/g,"&#39;")})'>
+    <div class="product-card" onclick='selectProduct(${JSON.stringify(p).replace(/'/g,"&#39;")})' >
       <img src="${p.image}" alt="${p.name}">
       <div class="card-body">
         <h3>${p.name}</h3>
@@ -81,24 +87,44 @@ function renderProducts(list = products) {
   `).join("");
 }
 
-renderProducts();
-
 /* SEARCH */
 search.addEventListener("input", e => {
   const q = e.target.value.toLowerCase();
   renderProducts(products.filter(p =>
     p.name.toLowerCase().includes(q) ||
     p.type.toLowerCase().includes(q) ||
-    p.description.toLowerCase().includes(q)
+    p.description.toLowerCase().includes(q) ||
+    p.image.toLowerCase().includes(q)
   ));
 });
 
-/* SELECT PRODUCT → GO TO CONTACT */
+/* SELECT PRODUCT */
 function selectProduct(product) {
-  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  sessionStorage.setItem("selectedProduct", JSON.stringify({
+    name: product.name,
+    price: product.price,
+    id: product.id,
+    image: product.image
+  }));
+
   window.location.href = "index.html#contact";
 }
+
+
+loadProducts();
+async function loadProducts() {
+  try {
+    const res = await fetch("http://localhost:5000/api/products");
+    products = await res.json();
+    renderProducts(products);
+  } catch {
+    grid.innerHTML = "<p>Server not reachable</p>";
+  }
+}
+
+
 </script>
+
 
 </body>
 </html>
