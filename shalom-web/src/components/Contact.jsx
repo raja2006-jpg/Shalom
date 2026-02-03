@@ -30,7 +30,7 @@ export default function Contact() {
       message: e.target.cmessage.value
     };
 
-    await fetch("http://localhost:5000/api/inquiries", {
+    await fetch("https://shalom-o8k7.onrender.com/api/inquiries", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(inquiry)

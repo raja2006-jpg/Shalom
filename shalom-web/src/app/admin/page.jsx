@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const API = "http://localhost:5000";
+const API = "https://shalom-o8k7.onrender.com";
 
 export default function AdminPage() {
   /* ================= STATE ================= */
@@ -25,7 +25,7 @@ export default function AdminPage() {
     const user = document.getElementById("user").value;
     const pass = document.getElementById("pass").value;
 
-    if (user === "shalom" && pass === "shalom2026") {
+    if (user === "shalom@gmail.com" && pass === "shalom2026") {
       setLoggedIn(true);
       setError("");
       loadData();

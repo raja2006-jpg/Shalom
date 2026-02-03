@@ -16,7 +16,7 @@ export default function ProductsPage() {
   /* ================= FETCH PRODUCTS ================= */
   async function loadProducts() {
     try {
-      const res = await fetch("http://localhost:5000/api/products");
+      const res = await fetch("https://shalom-o8k7.onrender.com/api/products");
       if (!res.ok) throw new Error();
       const data = await res.json();
       setProducts(data);
