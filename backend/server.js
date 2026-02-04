@@ -21,7 +21,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "http://localhost:3001"
+      "http://localhost:3001",
+      "https://shalom-o8k7.onrender.com"
     ], // Next.js dev ports
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
