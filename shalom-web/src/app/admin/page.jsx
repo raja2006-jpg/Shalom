@@ -261,7 +261,7 @@ export default function AdminPage() {
                 <div className="form-row">
                   <div className="form-group">
                     <label>Price (₹) *</label>
-                    <input id="pprice" type="text" placeholder="e.g., 45000" />
+                    <input id="pprice" type="number" placeholder="e.g., 45000" />
                   </div>
 
                   <div className="form-group">
