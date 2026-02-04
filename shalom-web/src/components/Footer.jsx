@@ -106,7 +106,7 @@ export default function Footer() {
               href="https://www.google.com/maps/search/?api=1&query=Shalom+System+Solutions+Kannampalayam+Sulur"
               target="_blank"
               rel="noopener noreferrer"
-            >📍Kannampalayam, Sulur, <div></div>Coimbatore
+            >📍Kannampalayam, Sulur,Coimbatore
             </a>
           </p>
 

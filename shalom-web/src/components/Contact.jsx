@@ -4,15 +4,20 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Contact() {
-  const [selectedProduct, setSelectedProduct] = useState(() => {
-    const saved = sessionStorage.getItem("selectedProduct");
-    if (saved) {
-      sessionStorage.removeItem("selectedProduct");
-      return JSON.parse(saved);
-    }
-    return null;
-  });
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [success, setSuccess] = useState(false);
+
+  /* ================= LOAD FROM SESSION STORAGE ================= */
+  useEffect(() => {
+    // Only access sessionStorage on the client side
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("selectedProduct");
+      if (saved) {
+        sessionStorage.removeItem("selectedProduct");
+        setSelectedProduct(JSON.parse(saved));
+      }
+    }
+  }, []);
 
   /* ================= CLEAR PRODUCT ================= */
   function clearSelectedProduct() {
@@ -122,12 +127,9 @@ export default function Contact() {
           <h3 style={{ color: "#4caf50", marginBottom: "5px" }}>
             Thank You!
           </h3>
-         <div>
-
           <p>
-            Your inquiry has been submitted successfully.our team contact you soon!
+            Your inquiry has been submitted successfully. Our team will contact you soon!
           </p>
-          </div>
         </div>
       )}
     </section>
