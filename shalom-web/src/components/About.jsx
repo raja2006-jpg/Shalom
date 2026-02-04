@@ -79,21 +79,21 @@ export default function About() {
         </p>
       </div>
 
-      {/* MARQUEE */}
-      <div className="marquee">
-        <div className="marquee-track">
-          <span className="badge genune">✔ Genuine Software</span>
-          <span className="badge life">✔ Lifetime Activation</span>
-          <span className="badge fast">✔ Fast Service</span>
-          <span className="badge trust">✔ Trusted Support</span>
+<div className="marquee">
+  <div className="marquee-track">
+    <span className="badge-genuine">✔ Genuine Software</span>
+    <span className="badge-life">✔ Lifetime Activation</span>
+    <span className="badge-fast">✔ Fast Service</span>
+    <span className="badge-trust">✔ Trusted Support</span>
 
-          {/* duplicate */}
-          <span className="badge genune">✔ Genuine Software</span>
-          <span className="badge life">✔ Lifetime Activation</span>
-          <span className="badge fast">✔ Fast Service</span>
-          <span className="badge trust">✔ Trusted Support</span>
-        </div>
-      </div>
+    <span className="badge-genuine">✔ Genuine Software</span>
+    <span className="badge-life">✔ Lifetime Activation</span>
+    <span className="badge-fast">✔ Fast Service</span>
+    <span className="badge-trust">✔ Trusted Support</span>
+  </div>
+  </div>
+
+
     </section>
   );
 }

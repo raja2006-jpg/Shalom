@@ -12,8 +12,8 @@ export default function Location() {
             src="/images/shalom.png"
             alt="Shalom System Solutions"
             className="company-logo"
-            width={200}
-            height={200}
+            width={210}
+            height={120}
           />
 
           <h2>System Solutions</h2>

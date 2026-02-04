@@ -822,60 +822,26 @@ footer p {
   line-height: 1.7;
   color: #555;
 }
-
-/* =========================
-   MARQUEE (IMPROVED)
-========================= */
-
 .marquee {
   position: relative;
+  z-index: 5;
   overflow: hidden;
-  padding: 10px 0;
-  margin-left: 190px;
-  margin-right: 190px;
-}
-
-.marquee::before,
-.marquee::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 80px;
-  height: 100%;
-  z-index: 2;
-}
-
-.marquee::before {
-  left: 0;
-  background: linear-gradient(to right, #e7f5ff, transparent);
-}
-
-.marquee::after {
-  right: 0;
-  background: linear-gradient(to left, #e7f5ff, transparent);
+  padding: 16px 0;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 40px auto;
 }
 
 .marquee-track {
   display: flex;
   gap: 30px;
   width: max-content;
-  animation: marquee-scroll 25s linear infinite;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
+  animation: marquee-scroll 22s linear infinite;
 }
 
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@media (max-width: 768px) {
-  .marquee {
-    margin-left: 1px;
-    margin-right: 1px;
-  }
+  to   { transform: translateX(-50%); }
 }
 
 /* BADGES */
@@ -885,18 +851,53 @@ footer p {
   font-size: 20px;
   font-weight: 600;
   white-space: nowrap;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  gap: 30px;
 }
 
-.badge:hover {
-  transform: translateY(-5px);
+/* COLORS */
+.badge-genuine { background: #d6ffa8;
+                 border-radius: 11px;
+                padding: 21px;
+                text-align: center; 
+              font-size: 22px;
+               font-family:'Inter', sans-serif;
+              font-weight: 600;
+            transition: all 0.3s ease;
+          color: #535352}
+.badge-life    { background: #c9f7ff;
+border-radius: 11px;
+text-align: center;
+padding: 21px;
+font-size: 22px; 
+font-family:'Inter', sans-serif;
+font-weight: 600;
+transition: all 0.3s ease;
+color: #535352;}
+.badge-fast    { background: #fff0b3;
+border-radius: 11px;
+text-align: center;
+padding: 21px;
+font-size: 22px;
+font-family:'Inter', sans-serif;
+font-weight: 600; 
+transition: all 0.3s ease;
+color: #535352}
+.badge-trust   { background: #e3d7ff;
+border-radius: 11px;
+text-align: center;
+padding: 21px;
+font-size: 22px;
+font-family:'Inter', sans-serif;
+font-weight: 600;
+transition: all 0.3s ease;
+color: #535352 }
+
+.badge:hover{
+  transform: translateY(4px);
 }
 
-.genune { background: #d6ffa8; }
-.life   { background: #c9f7ff; }
-.fast   { background: #fff0b3; }
-.trust  { background: #e3d7ff; }
 
 /* =========================
    RESPONSIVE & ACCESSIBILITY
