@@ -20,9 +20,9 @@ console.log("MONGO_URI =", process.env.MONGO_URI);
 app.use(
   cors({
     origin: [
+      "https://shalom-o8k7.onrender.com",
       "http://localhost:3000",
-      "http://localhost:3001",
-      "https://shalom-o8k7.onrender.com"
+      "http://localhost:3001" 
     ], // Next.js dev ports
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
