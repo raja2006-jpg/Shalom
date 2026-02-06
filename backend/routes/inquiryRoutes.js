@@ -1,40 +1,26 @@
 import express from "express";
 import Inquiry from "../models/Inquiry.js";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 const router = express.Router();
 
-/* EMAIL CONFIG */
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
-
-transporter.verify(function (error, success) {
-  if (error) {
-    console.log("Email config error:", error);
-  } else {
-    console.log("Email server ready");
-  }
-});
+/* RESEND CONFIG */
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 /* ADD */
 router.post("/", async (req, res) => {
   try {
+    // 1. Save inquiry (your existing process)
     const inquiry = await Inquiry.create(req.body);
 
+    // 2. Send email notification
     try {
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
+      await resend.emails.send({
+        from: "Shalom Website <onboarding@resend.dev>",
         to: process.env.ADMIN_EMAIL,
         subject: "New Inquiry Received - Shalom Website",
         html: `
-          <h3>New Inquiry</h3>
+          <h2>New Customer Inquiry</h2>
           <p><b>Name:</b> ${req.body.name}</p>
           <p><b>Phone:</b> ${req.body.phone}</p>
           <p><b>Product:</b> ${req.body.product}</p>
@@ -48,6 +34,7 @@ router.post("/", async (req, res) => {
       console.log("Email failed but inquiry saved:", mailErr.message);
     }
 
+    // 3. Respond normally
     res.json(inquiry);
 
   } catch (err) {
