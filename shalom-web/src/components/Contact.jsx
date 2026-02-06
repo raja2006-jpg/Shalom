@@ -26,11 +26,14 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
 
+    // ✅ Added image and price here
     const inquiry = {
       name: e.target.cname.value,
       phone: e.target.cphone.value,
       product: selectedProduct ? selectedProduct.name : "Not selected",
-      message: e.target.cmessage.value
+      message: e.target.cmessage.value,
+      image: selectedProduct ? selectedProduct.image : "",
+      price: selectedProduct ? selectedProduct.price : ""
     };
 
     try {
