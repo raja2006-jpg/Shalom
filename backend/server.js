@@ -15,7 +15,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://shalomsystems.vercel.app",
+      "https://shalomsystems.vercel.app",   // ADD THIS
       "https://shalom-o8k7.onrender.com",
       "http://localhost:3000",
       "http://localhost:3001"
@@ -24,6 +24,7 @@ app.use(
     credentials: true
   })
 );
+
 
 app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ extended: true }));
