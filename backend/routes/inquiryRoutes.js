@@ -15,8 +15,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-/* VERIFY SMTP */
-transporter.verify((error, success) => {
+transporter.verify(function (error, success) {
   if (error) {
     console.log("Email config error:", error);
   } else {
@@ -31,11 +30,11 @@ router.post("/", async (req, res) => {
 
     try {
       await transporter.sendMail({
-        from: `"Shalom Website" <${process.env.EMAIL_USER}>`,
+        from: process.env.EMAIL_USER,
         to: process.env.ADMIN_EMAIL,
-        subject: "📩 New Inquiry Received",
+        subject: "New Inquiry Received - Shalom Website",
         html: `
-          <h3>New Inquiry Received</h3>
+          <h3>New Inquiry</h3>
           <p><b>Name:</b> ${req.body.name}</p>
           <p><b>Phone:</b> ${req.body.phone}</p>
           <p><b>Product:</b> ${req.body.product}</p>
