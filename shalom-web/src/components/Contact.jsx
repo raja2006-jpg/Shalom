@@ -6,10 +6,9 @@ import Image from "next/image";
 export default function Contact() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  /* ================= LOAD FROM SESSION STORAGE ================= */
   useEffect(() => {
-    // Only access sessionStorage on the client side
     if (typeof window !== "undefined") {
       const saved = sessionStorage.getItem("selectedProduct");
       if (saved) {
@@ -19,14 +18,13 @@ export default function Contact() {
     }
   }, []);
 
-  /* ================= CLEAR PRODUCT ================= */
   function clearSelectedProduct() {
     setSelectedProduct(null);
   }
 
-  /* ================= SUBMIT ================= */
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
 
     const inquiry = {
       name: e.target.cname.value,
@@ -35,36 +33,41 @@ export default function Contact() {
       message: e.target.cmessage.value
     };
 
-    await fetch("https://shalom-o8k7.onrender.com/api/inquiries", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(inquiry)
-    });
+    try {
+      const res = await fetch(
+        "https://shalom-o8k7.onrender.com/api/inquiries",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(inquiry)
+        }
+      );
 
-    setSuccess(true);
-    setSelectedProduct(null);
+      if (!res.ok) throw new Error("Server error");
 
-    setTimeout(() => {
-      setSuccess(false);
-      e.target.reset();
-    }, 3000);
+      setSuccess(true);
+      setSelectedProduct(null);
+
+      setTimeout(() => {
+        setSuccess(false);
+        e.target.reset();
+      }, 3000);
+
+    } catch (err) {
+      alert("❌ Failed to send inquiry. Check backend logs.");
+      console.error(err);
+    }
+
+    setLoading(false);
   }
 
   return (
     <section id="contact" className="contact-section">
-      {/* TITLE */}
       <h2 className="reviews-title">Product Inquiry</h2>
 
-      {/* ================= SELECTED PRODUCT ================= */}
       {selectedProduct && (
         <div className="selected-product-box">
-          <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              alignItems: "center"
-            }}
-          >
+          <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
             <Image
               src={selectedProduct.image}
               alt="Product"
@@ -78,9 +81,7 @@ export default function Contact() {
             />
 
             <div>
-              <p style={{ fontSize: "14px", color: "#666" }}>
-                Product Selected
-              </p>
+              <p style={{ fontSize: "14px", color: "#666" }}>Product Selected</p>
               <h3>{selectedProduct.name}</h3>
               <p style={{ color: "#8FBC36", fontWeight: 700 }}>
                 ₹{selectedProduct.price}
@@ -88,48 +89,32 @@ export default function Contact() {
             </div>
           </div>
 
-          <button
-            onClick={clearSelectedProduct}
-            style={{
-              background: "#e5383515",
-              color: "#ff0101",
-              border: "none",
-              borderRadius: "8px",
-              padding: "8px 16px",
-              cursor: "pointer"
-            }}
-          >
-            ✕
-          </button>
+          <button onClick={clearSelectedProduct}>✕</button>
         </div>
       )}
 
-      {/* ================= FORM ================= */}
       {!success ? (
         <form className="contact-form" onSubmit={handleSubmit}>
           <input name="cname" placeholder="Your Name *" required />
           <input name="cphone" placeholder="Phone Number *" required />
+
           <input
             value={selectedProduct ? selectedProduct.name : ""}
             placeholder="Selected Product"
             readOnly
             style={{ background: "#f5f5f5" }}
           />
-          <textarea
-            name="cmessage"
-            placeholder="Your Message "
-          />
-          <button type="submit">Send</button>
+
+          <textarea name="cmessage" placeholder="Your Message" />
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Send"}
+          </button>
         </form>
       ) : (
         <div className="success-message">
-          <div style={{ fontSize: "48px", marginBottom: "10px" }}>✓</div>
-          <h3 style={{ color: "#4caf50", marginBottom: "5px" }}>
-            Thank You!
-          </h3>
-          <p>
-            Your inquiry has been submitted successfully. Our team will contact you soon!
-          </p>
+          <h3>Thank You!</h3>
+          <p>Your inquiry has been submitted successfully.</p>
         </div>
       )}
     </section>
