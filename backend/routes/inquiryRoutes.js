@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
           <p><b>Product:</b> ${req.body.product}</p>
           <p><b>Message:</b> ${req.body.message || "No message"}</p>
           <p><b>Price:</b> ₹${req.body.price}</p>
-          <img src="${req.body.image}" width="250"/>
+          
 
 
           ${
