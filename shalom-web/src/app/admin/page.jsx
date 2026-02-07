@@ -1,8 +1,7 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 const API = "https://shalom-o8k7.onrender.com";
@@ -22,6 +21,24 @@ export default function AdminPage() {
   const [imageFile, setImageFile] = useState(null);
   const [search, setSearch] = useState("");
 
+  /* ================= LOGIN ================= */
+  function login() {
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+
+    if (user === "shalom@gmail.com" && pass === "shalom2026") {
+      setLoggedIn(true);
+      setError("");
+      loadData();
+    } else {
+      setError("❌ Invalid credentials");
+    }
+  }
+
+  function logout() {
+    location.reload();
+  }
+
   /* ================= LOAD DATA ================= */
   async function loadData() {
     try {
@@ -33,58 +50,6 @@ export default function AdminPage() {
     } catch {
       alert("❌ Backend not running. Start server.js");
     }
-  }
-
-  /* ================= SESSION CHECK ================= */
-  useEffect(() => {
-    try {
-      const loginData = localStorage.getItem("adminSession");
-
-      if (loginData) {
-        const session = JSON.parse(loginData);
-        const now = new Date().getTime();
-
-        // 60 minutes session
-        if (now - session.time < 60 * 60 * 1000) {
-          setLoggedIn(true);
-          loadData();
-        } else {
-          localStorage.removeItem("adminSession");
-        }
-      }
-    } catch (err) {
-      console.log("Session error:", err);
-      localStorage.removeItem("adminSession");
-    }
-  }, []);
-
-  /* ================= LOGIN ================= */
-  function login() {
-    const user = document.getElementById("user").value;
-    const pass = document.getElementById("pass").value;
-
-    if (user === "shalom@gmail.com" && pass === "shalom2026") {
-      setLoggedIn(true);
-      setError("");
-
-      // Save session time
-      localStorage.setItem(
-        "adminSession",
-        JSON.stringify({
-          time: new Date().getTime()
-        })
-      );
-
-      loadData();
-    } else {
-      setError("❌ Invalid credentials");
-    }
-  }
-
-  /* ================= LOGOUT ================= */
-  function logout() {
-    localStorage.removeItem("adminSession");
-    setLoggedIn(false);
   }
 
   /* ================= FILE UPLOAD ================= */
@@ -390,4 +355,3 @@ export default function AdminPage() {
     </div>
   );
 }
-
