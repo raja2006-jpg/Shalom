@@ -131,7 +131,7 @@ export default function AdminPage() {
     p.type.toLowerCase().includes(search)
   );
 
-  /* ================= LOGIN SCREEN ================= */
+  /* ================= LOGIN SCREEN ================ */
   if (!loggedIn) {
     return (
       <div className="admin-wrapper">
