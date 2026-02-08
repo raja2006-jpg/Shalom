@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const API = "https://shalom-o8k7.onrender.com";
+const SESSION_DURATION = 60 * 60 * 1000; // 60 minutes in milliseconds
 
 export default function AdminPage() {
   /* ================= STATE ================= */
@@ -21,12 +22,31 @@ export default function AdminPage() {
   const [imageFile, setImageFile] = useState(null);
   const [search, setSearch] = useState("");
 
+  /* ================= SESSION CHECK ================= */
+  useEffect(() => {
+    const sessionExpiry = localStorage.getItem("adminSessionExpiry");
+    if (sessionExpiry) {
+      const expiryTime = parseInt(sessionExpiry, 10);
+      const currentTime = new Date().getTime();
+      
+      if (currentTime < expiryTime) {
+        setLoggedIn(true);
+        loadData();
+      } else {
+        localStorage.removeItem("adminSessionExpiry");
+      }
+    }
+  }, []);
+
   /* ================= LOGIN ================= */
   function login() {
     const user = document.getElementById("user").value;
     const pass = document.getElementById("pass").value;
 
     if (user === "shalom@gmail.com" && pass === "shalom2026") {
+      const expiryTime = new Date().getTime() + SESSION_DURATION;
+      localStorage.setItem("adminSessionExpiry", expiryTime.toString());
+      
       setLoggedIn(true);
       setError("");
       loadData();
@@ -36,6 +56,7 @@ export default function AdminPage() {
   }
 
   function logout() {
+    localStorage.removeItem("adminSessionExpiry");
     location.reload();
   }
 
@@ -355,4 +376,3 @@ export default function AdminPage() {
     </div>
   );
 }
-

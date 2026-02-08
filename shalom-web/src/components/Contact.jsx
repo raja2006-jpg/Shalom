@@ -70,7 +70,7 @@ export default function Contact() {
 
       {selectedProduct && (
         <div className="selected-product-box">
-          <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: "16px", alignItems: "center" ,fontFamily:"Poppins', sans-serif",padding:"6px"}}>
             <Image
               src={selectedProduct.image}
               alt="Product"
@@ -79,11 +79,15 @@ export default function Contact() {
               style={{
                 objectFit: "cover",
                 borderRadius: "12px",
-                border: "1px solid #8fbc3653"
+                border: " 3px solid #5454535f",
+               
+                
               }}
+               
+             
             />
 
-            <div>
+            <div >
               <p style={{ fontSize: "14px", color: "#666" }}>Product Selected</p>
               <h3>{selectedProduct.name}</h3>
               <p style={{ color: "#8FBC36", fontWeight: 700 }}>
@@ -92,7 +96,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <button onClick={clearSelectedProduct}>✕</button>
+          <button  className="contact-cancel" onClick={clearSelectedProduct}>cancel</button>
         </div>
       )}
 
