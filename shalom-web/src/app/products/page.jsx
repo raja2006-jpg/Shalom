@@ -102,7 +102,7 @@ export default function ProductsPage() {
           {error && <p className="empty-text">{error}</p>}
 
           {!error && filtered.length === 0 && (
-            <p className="empty-text">No products available</p>
+            <p className="empty-text">Loading...</p>
           )}
 
           {!error &&

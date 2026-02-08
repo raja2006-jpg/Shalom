@@ -38,7 +38,7 @@ export default function Location() {
               Computer Sales & Service
             </p>
 
-            <p>
+            <p className="location-contact">
               <strong>📞 Contact:</strong>
               <br />
               +91 96296 27339
