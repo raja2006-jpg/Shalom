@@ -83,7 +83,7 @@ export default function ProductsPage() {
       {/* ================= HEADER ================= */}
       <section className="products-hero">
         <h1>Our Products</h1>
-        <p>Browse available products and send an inquiry instantly</p>
+        <p>Browse available products and send a Message</p>
       </section>
 
       {/* ================= SEARCH ================= */}
@@ -111,6 +111,8 @@ export default function ProductsPage() {
                 key={product._id}
                 className="product-card"
                 onClick={() => selectProduct(product)}
+                
+                
               >
                 <Image
                   src={product.image}

@@ -278,7 +278,7 @@ export default function AdminPage() {
 
                   <div className="form-group">
                     <label>Product Type *</label>
-                    <input id="ptype" placeholder="e.g., Laptop, Desktop, SSD" />
+                    <input id="ptype" placeholder="e.g., Laptop, Desktop, SSD, Printer etc..." />
                   </div>
                 </div>
 
