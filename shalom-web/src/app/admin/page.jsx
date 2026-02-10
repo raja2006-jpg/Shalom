@@ -193,6 +193,7 @@ export default function AdminPage() {
     <div className="admin-wrapper" id="dashboard">
 
       {/* HEADER */}
+      <section>
       <header className="dashboard-header">
         <div className="header-left">
           <div className="logo-mini">S</div>
@@ -201,12 +202,14 @@ export default function AdminPage() {
             <p className="header-subtitle">Shalom System Solutions</p>
           </div>
         </div>
+        
 
         <div className="header-right">
           <Link href="/" className="btn-link">← Back to Website</Link>
           <button className="btn-logout" onClick={logout}>Logout</button>
         </div>
       </header>
+      </section>
 
       {/* STATS */}
       <div className="stats-grid">
@@ -344,7 +347,7 @@ export default function AdminPage() {
                   <img src={p.image} alt="" />
                   <h4>{p.name}</h4>
                   <span>₹{p.price}</span>
-                  <button onClick={() => deleteProduct(p._id)}>🗑️</button>
+                  <button className="admin-delete" onClick={() => deleteProduct(p._id)}>Delete</button>
                 </div>
               ))}
             </div>

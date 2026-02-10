@@ -90,7 +90,7 @@ export default function ProductsPage() {
       <div className="products-search-wrapper">
         <input
           type="text"
-          placeholder="Search products..."
+          placeholder="🔍 Search products..."
           value={search}
           onChange={handleSearch}
         />
