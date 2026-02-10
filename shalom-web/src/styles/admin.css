@@ -1062,6 +1062,7 @@ body {
 
 @media (max-width: 768px){
   .search-box{
+    margin-left: 1px;
     display: flex;
     position: sticky;
     top:20px;
@@ -1069,7 +1070,7 @@ body {
 
   }
   .admin-delete{
-    margin-left: 23px;
+    margin-left:1px;
   }
 
 }
