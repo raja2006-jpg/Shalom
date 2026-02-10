@@ -38,7 +38,7 @@ export default function Contact() {
 
     try {
       const res = await fetch(
-        "https://shalom-o8k7.onrender.com/api/inquiries",
+        "https://shalom-kappa.vercel.app/api/inquiries",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -16,7 +16,7 @@ app.use(
   cors({
     origin: [
       "https://shalomsystems.vercel.app",   // ADD THIS
-      "https://shalom-o8k7.onrender.com",
+      "https://shalom-kappa.vercel.app",
       "http://localhost:3000",
       "http://localhost:3001"
     ],

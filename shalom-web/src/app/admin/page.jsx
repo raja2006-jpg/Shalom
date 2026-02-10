@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const API = "https://shalom-o8k7.onrender.com";
+const API = "https://shalom-kappa.vercel.app";
 const SESSION_DURATION = 60 * 60 * 1000; // 60 minutes in milliseconds
 
 export default function AdminPage() {
