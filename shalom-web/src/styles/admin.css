@@ -1,5 +1,8 @@
 /* ==================== MODERN ADMIN PANEL CSS ==================== */
 
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +10,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family:"Bebas Neue", sans-serif;
   background: linear-gradient(135deg, #f0f4f8 0%, #d9e7e3 100%);
   min-height: 100vh;
   overflow-x: hidden;

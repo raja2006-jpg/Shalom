@@ -126,20 +126,6 @@ export default function Footer() {
       {/* BOTTOM */}
       <div className="footer-bottom">
         <span>© 2026 Shalom System Solutions</span>
-        <span>
-          Website by{" "}
-          <a
-            id="nexlet"
-            href="https://nexlet.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <strong>
-              <span>NeX</span>
-              <span id="let">Let</span>
-            </strong>
-          </a>
-        </span>
       </div>
     </footer>
   );

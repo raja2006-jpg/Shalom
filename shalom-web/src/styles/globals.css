@@ -1,6 +1,7 @@
 
 
 /* style.css - Glozzy Light Theme */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 * {
   margin: 0;
@@ -12,9 +13,11 @@ html{
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family:"Bebas Neue", sans-serif;
+  letter-spacing:0.7px;
+  
   background: linear-gradient(70deg, #ebffe8 1%, #f4ffef6a 50%, #f5f7fa 100%);
-  color: #333;
+  color: #4c4c4c;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
@@ -1821,18 +1824,11 @@ color: #535352 }
   border-top: 1px solid rgba(0,0,0,0.15);
   display: flex;
   justify-content: space-between;
-  font-size: 13.5px;
+  font-size: 16.5px;
+  text-align: center;
 }
 
-#nexlet {
-  text-decoration: none;
-  color: #888888c6;
-}
 
-#let {
-  color: #888888c6;
-  
-}
 
 /* RESPONSIVE */
 
