@@ -111,7 +111,7 @@ export default function Services() {
           <article className="service-box reverse">
             <div className="service-image">
               <img
-                src="/images/cameras.avif"
+                src="/images/cctv.avif"
                 alt="Security and CCTV Services"
               />
             </div>
@@ -144,6 +144,25 @@ export default function Services() {
               </p>
             </div>
           </article>
+          {/* Service 8 */}
+          <article className="service-box reverse">
+            <div className="service-image">
+              <img
+                src="/images/antivirus.jpg"
+                alt="Security and CCTV Services"
+              />
+            </div>
+            <div className="service-content">
+              <span className="service-tag">Anti Virus</span>
+              <h3>Total System Protection</h3>
+              <p>
+                Advanced Protection For Your PC,laptops
+                Maximum Benifits | Biggest Savings | Greatest Offers
+                Only in Shalom System Solutions
+              </p>
+            </div>
+          </article>
+          
 
         </div>
       </div>

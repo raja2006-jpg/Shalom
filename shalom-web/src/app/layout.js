@@ -13,7 +13,7 @@ export const metadata = {
     "Coimbatore IT services"
   ],
   icons: {
-    icon: "/mainlogos.png"   // site logo (favicon)
+    icon: "/mainlogos.png"            // site logo (favicon)
   }
 };
 
