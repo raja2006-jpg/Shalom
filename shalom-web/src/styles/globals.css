@@ -13,7 +13,7 @@ html{
 }
 
 body {
-  font-family:"Bebas Neue", sans-serif;
+  font-family:"Bebas Neue", sans-serif; /*inner sans*/
   letter-spacing:0.7px;
   
   background: linear-gradient(70deg, #ebffe8 1%, #f4ffef6a 50%, #f5f7fa 100%);
