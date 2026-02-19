@@ -92,14 +92,14 @@ export default function ProductsPage() {
     JSON.stringify(selectedProducts)
   );
 
-  router.push("/");
+  router.push("/contact");
 
   setTimeout(() => {
     const el = document.getElementById("contact");
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
-  }, 800); // mobile needs delay
+  }, 900); // mobile needs delay
 }
 
 
