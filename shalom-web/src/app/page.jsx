@@ -9,6 +9,7 @@ import Contact from "@/components/Contact";
 import Location from "@/components/Location";
 import Footer from "@/components/Footer";
 
+
 export default function HomePage() {
   return (
     <>

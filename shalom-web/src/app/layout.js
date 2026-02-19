@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import "../styles/admin.css";
 
+
 export const metadata = {
   title: "Shalom | System Solutions",
   description:

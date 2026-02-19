@@ -139,7 +139,7 @@ export default function ProductsPage() {
             }}
           >
             <span style={{ fontSize: "15px" }}>{selectMode ? "✕" : "☑"}</span>
-            {selectMode ? "Cancel" : "Select Multiple"}
+            {selectMode ? "Cancel" : "Select Multiple Products"}
           </button>
         </div>
 
@@ -238,7 +238,7 @@ export default function ProductsPage() {
           gap: 10px;
           padding: 10px 24px 4px;
           flex-wrap: wrap;
-        }
+         
         .toolbar-btn {
           padding: 9px 20px;
           border-radius: 8px;
@@ -280,10 +280,10 @@ export default function ProductsPage() {
 
         /* Card selected state */
         .card--selected {
-          outline: 3px solid #8fbc36;
+          
           outline-offset: 2px;
           transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(143, 188, 54, 0.25);
+          box-shadow: 0 8px 20px rgba(52, 52, 52, 0.33);
         }
 
         /* Checkbox badge */

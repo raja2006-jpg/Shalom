@@ -1,4 +1,9 @@
 import Image from 'next/image';
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdLocationOn } from "react-icons/md";
+import { HiMail } from "react-icons/hi";
+import { FaLaptop } from "react-icons/fa";
+
 
 export default function Location() {
   return (
@@ -21,7 +26,8 @@ export default function Location() {
 
           <div className="company-details">
             <p>
-              <strong>📍 Address:</strong>
+               <MdLocationOn className="icon" />
+              <strong> Address:</strong>
               <br />
               3 RD Jeeva Nagar, Kannampalayam,
               <br />
@@ -33,13 +39,15 @@ export default function Location() {
             </p>
 
             <p>
-              <strong>🏢 Category:</strong>
+               <FaLaptop className="icon" />
+              <strong>Category:</strong>
               <br />
               Computer Sales & Service
             </p>
 
             <p className="location-contact">
-              <strong>📞 Contact:</strong>
+              <FaPhoneAlt className="icon" />
+              <strong> Contact:</strong>
               <br />
               +91 96296 27339
             </p>

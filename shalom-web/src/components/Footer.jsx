@@ -1,4 +1,9 @@
 import Image from 'next/image';
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdLocationOn } from "react-icons/md";
+import { HiMail } from "react-icons/hi";
+import { FaLaptop } from "react-icons/fa";
+
 
 export default function Footer() {
   return (
@@ -98,6 +103,7 @@ export default function Footer() {
         </div>
 
         {/* CONTACT */}
+        <div className="contact-item">
         <div className="footer-contact">
           <h3>Contact</h3>
 
@@ -106,16 +112,17 @@ export default function Footer() {
               href="https://www.google.com/maps/search/?api=1&query=Shalom+System+Solutions+Kannampalayam+Sulur"
               target="_blank"
               rel="noopener noreferrer"
-            >📍Kannampalayam, Sulur,Coimbatore
+            >
+              <MdLocationOn className="icon" />Kannampalayam, Sulur,Coimbatore
             </a>
           </p>
 
           <p>
-            📞 <a href="tel:+919629627339">+91 96296 27339</a>
+              <FaPhoneAlt className="icon" /> <a href="tel:+919629627339">+91 96296 27339</a>
           </p>
 
           <p>
-            📩{" "}
+            <HiMail className="icon" />{" "}
             <a href="mailto:shalomsystemsolutions1@gmail.com">
               shalomsystemsolutions@gmail.com
             </a>
@@ -126,6 +133,7 @@ export default function Footer() {
       {/* BOTTOM */}
       <div className="footer-bottom">
         <span>© 2026 Shalom System Solutions</span>
+      </div>
       </div>
     </footer>
   );
