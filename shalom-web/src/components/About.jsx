@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { MdLocationOn } from "react-icons/md";
 
 export default function About() {
   return (
@@ -27,7 +28,7 @@ export default function About() {
                 Specialist in diagnostics, OS installation, lifetime activation,
                 antivirus deployment, and system performance optimization.
               </p>
-              <span className="location">📍 Coimbatore</span>
+              <span className="location"><MdLocationOn className="icon" /> Coimbatore</span>
             </div>
             <div className="about-image">
               <Image src="/images/david.jpeg" alt="David" width={300} height={300} />
@@ -46,7 +47,7 @@ export default function About() {
                 quality-driven IT services with transparent pricing and genuine
                 products.
               </p>
-              <span className="location">📍 Coimbatore</span>
+              <span className="location"><MdLocationOn className="icon" /> Coimbatore</span>
             </div>
             <div className="about-image">
               <Image src="/images/lijo.jpeg" alt="Lijo" width={300} height={300} />
@@ -59,7 +60,7 @@ export default function About() {
               <h3>Paul R</h3>
               <span className="role">Technical Specialist</span>
               <p>Performance tuning & lifetime activation expert.</p>
-              <span className="location">📍 Coimbatore</span>
+              <span className="location"><MdLocationOn className="icon" /> Coimbatore</span>
             </div>
             <div className="about-image">
               <Image src="/images/paul.jpeg" alt="Paul" width={300} height={300} />
