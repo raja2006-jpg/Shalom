@@ -26,6 +26,7 @@ export default function Contact() {
       }
     }
   }, []);
+  
 
   /* helpers */
   const isMulti = selectedProducts.length > 0;

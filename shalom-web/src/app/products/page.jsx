@@ -81,11 +81,27 @@ export default function ProductsPage() {
   }
 
   /* ── CONFIRM MULTI ── */
-  function confirmSelection() {
-    if (selectedProducts.length === 0) return;
-    sessionStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
-    router.push("/#contact");
+ function confirmSelection() {
+  if (selectedProducts.length === 0) {
+    alert("Please select at least one product");
+    return;
   }
+
+  sessionStorage.setItem(
+    "selectedProducts",
+    JSON.stringify(selectedProducts)
+  );
+
+  router.push("/");
+
+  setTimeout(() => {
+    const el = document.getElementById("contact");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, 800); // mobile needs delay
+}
+
 
   return (
     <>
