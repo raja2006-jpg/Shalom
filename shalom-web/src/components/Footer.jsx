@@ -103,7 +103,6 @@ export default function Footer() {
         </div>
 
         {/* CONTACT */}
-        <div className="contact-item">
         <div className="footer-contact">
           <h3>Contact</h3>
 
@@ -133,7 +132,6 @@ export default function Footer() {
       {/* BOTTOM */}
       <div className="footer-bottom">
         <span>© 2026 Shalom System Solutions</span>
-      </div>
       </div>
     </footer>
   );
