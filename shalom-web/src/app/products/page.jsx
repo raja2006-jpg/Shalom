@@ -92,7 +92,7 @@ export default function ProductsPage() {
     JSON.stringify(selectedProducts)
   );
 
-  router.push("/contact");
+  router.push("/");
 
   setTimeout(() => {
     const el = document.getElementById("contact");
