@@ -1,7 +1,21 @@
 
 
 /* style.css - Glozzy Light Theme */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+/* Heading Style */
+h1, h2, h3, .logo {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Body Style */
+body, p, span, button, input {
+  font-family: "Inter", sans-serif;
+}
+
+
+
 
 * {
   margin: 0;
@@ -13,7 +27,7 @@ html{
 }
 
 body {
-  font-family:"Bebas Neue", sans-serif; /*inner sans*/
+  font-family:"Orbitron", sans-serif; /*inner sans*/
   letter-spacing:0.7px;
   
   background: linear-gradient(70deg, #ebffe8 1%, #f4ffef6a 50%, #f5f7fa 100%);
