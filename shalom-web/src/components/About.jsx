@@ -39,9 +39,7 @@ export default function About() {
           <article className="about-card center">
             <div className="about-text">
               <h3>Lijo Daniel D</h3>
-              <span className="role">
-                Founder · Shalom System Solutions
-              </span>
+              <span className="role">Founder · Shalom System Solutions</span>
               <p>
                 Leads business operations, customer engagement, and ensures
                 quality-driven IT services with transparent pricing and genuine
@@ -59,7 +57,10 @@ export default function About() {
             <div className="about-text">
               <h3>Paul R</h3>
               <span className="role">Technical Specialist</span>
-              <p>Performance tuning & lifetime activation expert.</p>
+              <p>
+                Expert in performance tuning, SSD &amp; RAM upgrades, and lifetime
+                software activation — ensuring every system runs at peak efficiency.
+              </p>
               <span className="location"><MdLocationOn className="icon" /> Coimbatore</span>
             </div>
             <div className="about-image">
@@ -72,7 +73,7 @@ export default function About() {
         <p className="about-summary">
           We specialize in laptops, desktops, operating systems, genuine licenses,
           antivirus solutions, and long-term performance optimization.
-          From <strong> new & used laptop sales</strong> to{" "}
+          From <strong>new &amp; used laptop sales</strong> to{" "}
           <strong>Windows and MS Office lifetime licenses</strong>, from{" "}
           <strong>hardware upgrades</strong> to{" "}
           <strong>data recovery and network setup</strong>, we ensure every
@@ -80,20 +81,22 @@ export default function About() {
         </p>
       </div>
 
-<div className="marquee">
-  <div className="marquee-track">
-    <span className="badge-genuine">✔ Genuine Software</span>
-    <span className="badge-life">✔ Lifetime Activation</span>
-    <span className="badge-fast">✔ Fast Service</span>
-    <span className="badge-trust">✔ Trusted Support</span>
-
-    <span className="badge-genuine">✔ Genuine Software</span>
-    <span className="badge-life">✔ Lifetime Activation</span>
-    <span className="badge-fast">✔ Fast Service</span>
-    <span className="badge-trust">✔ Trusted Support</span>
-  </div>
-  </div>
-
+      <div className="marquee">
+        <div className="marquee-track">
+          <span className="badge-genuine">✔ Genuine Software</span>
+          <span className="badge-life">✔ Lifetime Activation</span>
+          <span className="badge-fast">✔ Fast Service</span>
+          <span className="badge-trust">✔ Trusted Support</span>
+          <span className="badge-genuine">✔ Genuine Software</span>
+          <span className="badge-life">✔ Lifetime Activation</span>
+          <span className="badge-fast">✔ Fast Service</span>
+          <span className="badge-trust">✔ Trusted Support</span>
+          <span className="badge-genuine">✔ Genuine Software</span>
+          <span className="badge-life">✔ Lifetime Activation</span>
+          <span className="badge-fast">✔ Fast Service</span>
+          <span className="badge-trust">✔ Trusted Support</span>
+        </div>
+      </div>
 
     </section>
   );

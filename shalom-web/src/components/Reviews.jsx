@@ -1,41 +1,22 @@
 import Image from 'next/image';
 
 export default function Reviews() {
-  const row1 = [
-    "kalyan.png",
-    "jerry.png",
-    "prasath.png",
-    "finance.png",
-    "srihari.png",
-    "finance.png",
-    "jerry.png",
-    "prasath.png",
-    "srihari.png",
-    "kalyan.png"
-  ];
+  const base1 = ["kalyan.png", "jerry.png", "prasath.png", "finance.png", "srihari.png"];
+  const base2 = ["jerry.png", "finance.png", "prasath.png", "kalyan.png", "srihari.png"];
 
-  const row2 = [
-    "jerry.png",
-    "finance.png",
-    "prasath.png",
-    "kalyan.png",
-    "srihari.png",
-    "prasath.png",
-    "jerry.png",
-    "finance.png",
-    "srihari.png",
-    "kalyan.png"
-  ];
+  // Triple so the marquee never shows a gap
+  const row1 = [...base1, ...base1, ...base1];
+  const row2 = [...base2, ...base2, ...base2];
 
   return (
     <section className="reviews-marquee" id="reviews">
-      <h2 className="reviews-title">our customers reviews</h2>
+      <h2 className="reviews-title">Our Customers&rsquo; Reviews</h2>
 
       <div className="marquee-row left">
         <div className="marquee-track">
           {row1.map((img, i) => (
             <div key={i} className="review-box">
-              <Image src={`/images/${img}`} alt="Review" width={200} height={200} />
+              <Image src={`/images/${img}`} alt="Customer review" width={200} height={200} />
             </div>
           ))}
         </div>
@@ -45,7 +26,7 @@ export default function Reviews() {
         <div className="marquee-track">
           {row2.map((img, i) => (
             <div key={i} className="review-box">
-              <Image src={`/images/${img}`} alt="Review" width={200} height={200} />
+              <Image src={`/images/${img}`} alt="Customer review" width={200} height={200} />
             </div>
           ))}
         </div>

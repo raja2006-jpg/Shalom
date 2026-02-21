@@ -2,8 +2,6 @@ import Image from 'next/image';
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import { HiMail } from "react-icons/hi";
-import { FaLaptop } from "react-icons/fa";
-
 
 export default function Footer() {
   return (
@@ -26,9 +24,9 @@ export default function Footer() {
           </h2>
 
           <p className="footer-tagline">
-            Complete Hardware & Software Solutions
+            Complete Hardware &amp; Software Solutions
             <br />
-            Under High Quality & Services
+            Under High Quality &amp; Services
           </p>
 
           <div className="footer-socials">
@@ -36,6 +34,7 @@ export default function Footer() {
               href="https://www.instagram.com/shalom_system_solution?igsh=cnFveGdtYXZha3ox"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram"
             >
               <Image src="/images/insta.png" alt="Instagram" width={40} height={40} />
             </a>
@@ -44,20 +43,16 @@ export default function Footer() {
               href="https://www.facebook.com/share/1BrxJdMQNn/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Facebook"
             >
-              <Image
-                className="facebook"
-                src="/images/facebookss.jpg"
-                alt="Facebook"
-                width={40}
-                height={40}
-              />
+              <Image className="facebook" src="/images/facebookss.jpg" alt="Facebook" width={40} height={40} />
             </a>
 
             <a
               href="https://www.linkedin.com/in/lijo-daniel-d-71a917327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
             >
               <Image src="/images/linkedin.png" alt="LinkedIn" width={40} height={40} />
             </a>
@@ -66,14 +61,9 @@ export default function Footer() {
               href="https://wa.me/message/N7HAWY2AXRH2O1"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="WhatsApp"
             >
-              <Image
-                className="whattsapp"
-                src="/images/whattsapp.png"
-                alt="WhatsApp"
-                width={40}
-                height={40}
-              />
+              <Image className="whattsapp" src="/images/whattsapp.png" alt="WhatsApp" width={40} height={40} />
             </a>
           </div>
         </div>
@@ -112,18 +102,19 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MdLocationOn className="icon" />Kannampalayam, Sulur,Coimbatore
+              <MdLocationOn className="icon" />Kannampalayam, Sulur, Coimbatore
             </a>
           </p>
 
           <p>
-              <FaPhoneAlt className="icon" /> <a href="tel:+919629627339">+91 96296 27339</a>
+            <FaPhoneAlt className="icon" />
+            <a href="tel:+919629627339">+91 96296 27339</a>
           </p>
 
           <p>
             <HiMail className="icon" />{" "}
             <a href="mailto:shalomsystemsolutions1@gmail.com">
-              shalomsystemsolutions@gmail.com
+              shalomsystemsolutions1@gmail.com
             </a>
           </p>
         </div>
@@ -131,7 +122,7 @@ export default function Footer() {
 
       {/* BOTTOM */}
       <div className="footer-bottom">
-        <span>© 2026 Shalom System Solutions</span>
+        <span>© 2026 Shalom System Solutions. All rights reserved.</span>
       </div>
     </footer>
   );

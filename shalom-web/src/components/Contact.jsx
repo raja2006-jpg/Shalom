@@ -4,21 +4,19 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Contact() {
-  const [selectedProduct, setSelectedProduct] = useState(null);   // single (legacy)
-  const [selectedProducts, setSelectedProducts] = useState([]);   // multi
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Multi-select (new)
       const multi = sessionStorage.getItem("selectedProducts");
       if (multi) {
         sessionStorage.removeItem("selectedProducts");
         setSelectedProducts(JSON.parse(multi));
         return;
       }
-      // Single (legacy fallback)
       const single = sessionStorage.getItem("selectedProduct");
       if (single) {
         sessionStorage.removeItem("selectedProduct");
@@ -26,9 +24,7 @@ export default function Contact() {
       }
     }
   }, []);
-  
 
-  /* helpers */
   const isMulti = selectedProducts.length > 0;
   const hasSelection = isMulti || selectedProduct !== null;
 
@@ -41,12 +37,11 @@ export default function Contact() {
     setSelectedProducts((prev) => prev.filter((p) => p.id !== id));
   }
 
-  /* derived product name string for the form field */
   const productLabel = isMulti
     ? selectedProducts.map((p) => p.name).join(", ")
     : selectedProduct
-    ? selectedProduct.name
-    : "";
+      ? selectedProduct.name
+      : "";
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -57,13 +52,11 @@ export default function Contact() {
       phone: e.target.cphone.value,
       product: productLabel || "Not selected",
       message: e.target.cmessage.value,
-      // multi-product extras
       products: isMulti
         ? selectedProducts.map((p) => ({ name: p.name, price: p.price, image: p.image }))
         : selectedProduct
-        ? [{ name: selectedProduct.name, price: selectedProduct.price, image: selectedProduct.image }]
-        : [],
-      // legacy single-product fields
+          ? [{ name: selectedProduct.name, price: selectedProduct.price, image: selectedProduct.image }]
+          : [],
       image: isMulti ? (selectedProducts[0]?.image ?? "") : (selectedProduct?.image ?? ""),
       price: isMulti
         ? selectedProducts.map((p) => p.price).join(", ")
@@ -102,7 +95,7 @@ export default function Contact() {
       {/* ── Multi-product selected box ── */}
       {isMulti && (
         <div className="selected-product-box">
-          <p style={{ fontSize: "13px", color: "#666", marginBottom: "10px" }}>
+          <p className="selected-count">
             {selectedProducts.length} product{selectedProducts.length > 1 ? "s" : ""} selected
           </p>
 
@@ -114,16 +107,17 @@ export default function Contact() {
                   alt={p.name}
                   width={60}
                   height={60}
-                  style={{ objectFit: "cover", borderRadius: "8px", border: "2px solid #5454535f" }}
+                  style={{ objectFit: "cover", borderRadius: "8px", border: "2px solid #e0e0e0" }}
                 />
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontWeight: 600, margin: 0 }}>{p.name}</p>
-                  <p style={{ color: "#8FBC36", fontWeight: 700, margin: 0 }}>₹{p.price}</p>
+                <div className="multi-product-info">
+                  <p className="multi-product-name">{p.name}</p>
+                  <p className="multi-product-price">₹{p.price}</p>
                 </div>
                 <button
                   className="remove-one-btn"
                   onClick={() => removeOne(p.id)}
                   title="Remove"
+                  aria-label={`Remove ${p.name}`}
                 >
                   ✕
                 </button>
@@ -140,30 +134,22 @@ export default function Contact() {
       {/* ── Single-product selected box (legacy) ── */}
       {!isMulti && selectedProduct && (
         <div className="selected-product-box">
-          <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              alignItems: "center",
-              fontFamily: "Poppins, sans-serif",
-              padding: "6px",
-            }}
-          >
+          <div className="single-product-row">
             <Image
               src={selectedProduct.image}
               alt="Product"
               width={90}
               height={90}
-              style={{ objectFit: "cover", borderRadius: "12px", border: "3px solid #5454535f" }}
+              style={{ objectFit: "cover", borderRadius: "12px", border: "2px solid #e0e0e0" }}
             />
             <div>
-              <p style={{ fontSize: "14px", color: "#666" }}>Product Selected</p>
-              <h3>{selectedProduct.name}</h3>
-              <p style={{ color: "#8FBC36", fontWeight: 700 }}>₹{selectedProduct.price}</p>
+              <p className="selected-count">Product Selected</p>
+              <h3 className="single-product-name">{selectedProduct.name}</h3>
+              <p className="multi-product-price">₹{selectedProduct.price}</p>
             </div>
           </div>
           <button className="contact-cancel" onClick={clearSelectedProduct}>
-            cancel
+            Remove
           </button>
         </div>
       )}
@@ -178,61 +164,20 @@ export default function Contact() {
             value={productLabel}
             placeholder="Selected Product"
             readOnly
-            style={{ background: "#f5f5f5" }}
           />
 
           <textarea name="cmessage" placeholder="Your Message" />
 
           <button type="submit" disabled={loading}>
-            {loading ? "Sending..." : "Send"}
+            {loading ? "Sending…" : "Send Inquiry"}
           </button>
         </form>
       ) : (
         <div className="success-message">
-          <h3>Thank You!</h3>
-          <p>Your inquiry has been submitted successfully.</p>
+          <h3>🎉 Thank You!</h3>
+          <p>Your inquiry has been submitted successfully. We&rsquo;ll contact you shortly.</p>
         </div>
       )}
-
-      {/* ── Inline styles ── */}
-      <style jsx>{`
-        .multi-product-list {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          margin-bottom: 12px;
-          max-height: 260px;
-          overflow-y: auto;
-        }
-        .multi-product-item {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 8px;
-          background: #fafafa;
-          border-radius: 10px;
-          border: 1px solid #eee;
-        }
-        .remove-one-btn {
-          background: none;
-          border: none;
-          color: #aaa;
-          font-size: 16px;
-          cursor: pointer;
-          padding: 4px 8px;
-          border-radius: 50%;
-          transition: color 0.15s, background 0.15s;
-        }
-        .remove-one-btn:hover {
-          color: #e74c3c;
-          background: #ffeeed;
-        }
-        @media (max-width: 480px) {
-          .multi-product-item {
-            padding: 6px;
-          }
-        }
-      `}</style>
     </section>
   );
 }

@@ -1,14 +1,12 @@
 import Image from 'next/image';
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import { HiMail } from "react-icons/hi";
 import { FaLaptop } from "react-icons/fa";
-
 
 export default function Location() {
   return (
     <section className="company-location" id="location">
-      <h2 className="reviews-title">our company address</h2>
+      <h2 className="reviews-title">Our Company Address</h2>
 
       <div className="location-container">
         {/* LEFT : COMPANY INFO */}
@@ -22,14 +20,14 @@ export default function Location() {
           />
 
           <h2>System Solutions</h2>
-          <p className="company-tagline">Computer Service & IT Solutions</p>
+          <p className="company-tagline">Computer Service &amp; IT Solutions</p>
 
           <div className="company-details">
             <p>
-               <MdLocationOn className="icon" />
+              <MdLocationOn className="icon" />
               <strong> Address:</strong>
               <br />
-              3 RD Jeeva Nagar, Kannampalayam,
+              3rd Jeeva Nagar, Kannampalayam,
               <br />
               Jeevanagar 3rd Street,
               <br />
@@ -39,17 +37,17 @@ export default function Location() {
             </p>
 
             <p>
-               <FaLaptop className="icon" />
+              <FaLaptop className="icon" />
               <strong>Category:</strong>
               <br />
-              Computer Sales & Service
+              Computer Sales &amp; Service
             </p>
 
             <p className="location-contact">
               <FaPhoneAlt className="icon" />
               <strong> Contact:</strong>
               <br />
-              +91 96296 27339
+              <a>+91 96296 27339</a>
             </p>
           </div>
         </div>
@@ -76,43 +74,17 @@ export default function Location() {
 
           {/* GALLERY UNDER MAP */}
           <div className="map-gallery">
-            <div
-              className="gallery-item"
-              onClick={() => (window.location.href = "/products")}
-            >
-              <Image
-                src="/images/company 1.webp"
-                alt="Work Image 1"
-                width={300}
-                height={200}
-              />
+            <div className="gallery-item" onClick={() => (window.location.href = "/products")}>
+              <Image src="/images/company 1.webp" alt="Work Image 1" width={300} height={200} />
             </div>
-
             <div className="gallery-item">
-              <Image
-                src="/images/company 2.webp"
-                alt="Work Image 2"
-                width={300}
-                height={200}
-              />
+              <Image src="/images/company 2.webp" alt="Work Image 2" width={300} height={200} />
             </div>
-
             <div className="gallery-item">
-              <Image
-                src="/images/company 3.webp"
-                alt="Work Image 3"
-                width={300}
-                height={200}
-              />
+              <Image src="/images/company 3.webp" alt="Work Image 3" width={300} height={200} />
             </div>
-
             <div className="gallery-item">
-              <Image
-                src="/images/company 4.webp"
-                alt="Work Image 4"
-                width={300}
-                height={200}
-              />
+              <Image src="/images/company 4.webp" alt="Work Image 4" width={300} height={200} />
             </div>
           </div>
         </div>

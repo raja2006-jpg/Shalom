@@ -16,14 +16,11 @@ export default function Services() {
           {/* Service 1 */}
           <article className="service-box">
             <div className="service-image">
-              <img
-                src="/images/laptop sales.jpg"
-                alt="Laptop and Desktop Sales"
-              />
+              <img src="/images/laptop sales.jpg" alt="Laptop and Desktop Sales" />
             </div>
             <div className="service-content">
               <span className="service-tag">Sales</span>
-              <h3>Laptop & Desktop Sales</h3>
+              <h3>Laptop &amp; Desktop Sales</h3>
               <p>
                 Brand-new and certified pre-owned laptops and desktops supplied with
                 professional configuration, warranty assurance, and expert guidance
@@ -35,14 +32,11 @@ export default function Services() {
           {/* Service 2 */}
           <article className="service-box reverse">
             <div className="service-image">
-              <img
-                src="/images/laptop repair.webp"
-                alt="Laptop and Desktop Repair"
-              />
+              <img src="/images/laptop repair.webp" alt="Laptop and Desktop Repair" />
             </div>
             <div className="service-content">
               <span className="service-tag">Repair</span>
-              <h3>Laptop & Desktop Repair</h3>
+              <h3>Laptop &amp; Desktop Repair</h3>
               <p>
                 End-to-end repair services including motherboard diagnostics, display
                 replacement, keyboard repair, power issues, and performance restoration
@@ -54,14 +48,11 @@ export default function Services() {
           {/* Service 3 */}
           <article className="service-box">
             <div className="service-image">
-              <img
-                src="/images/OS.png"
-                alt="Operating System Installation"
-              />
+              <img src="/images/OS.png" alt="Operating System Installation" />
             </div>
             <div className="service-content">
               <span className="service-tag">Software</span>
-              <h3>OS & Genuine Software Installation</h3>
+              <h3>OS &amp; Genuine Software Installation</h3>
               <p>
                 Secure installation of Windows operating systems with genuine lifetime
                 activation, along with licensed Microsoft Office solutions for long-term
@@ -73,14 +64,11 @@ export default function Services() {
           {/* Service 4 */}
           <article className="service-box reverse">
             <div className="service-image">
-              <img
-                src="/images/rams.jpg"
-                alt="SSD and RAM Upgrade"
-              />
+              <img src="/images/rams.jpg" alt="SSD and RAM Upgrade" />
             </div>
             <div className="service-content">
               <span className="service-tag">Performance</span>
-              <h3>SSD, RAM & Performance Upgrade</h3>
+              <h3>SSD, RAM &amp; Performance Upgrade</h3>
               <p>
                 Performance optimization through SSD upgrades, RAM expansion, startup
                 tuning, and thermal servicing to ensure faster boot times and system
@@ -92,14 +80,11 @@ export default function Services() {
           {/* Service 5 */}
           <article className="service-box">
             <div className="service-image">
-              <img
-                src="/images/Networking.png"
-                alt="Networking and Data Solutions"
-              />
+              <img src="/images/Networking.png" alt="Networking and Data Solutions" />
             </div>
             <div className="service-content">
               <span className="service-tag">Networking</span>
-              <h3>Networking & Data Solutions</h3>
+              <h3>Networking &amp; Data Solutions</h3>
               <p>
                 Professional Wi-Fi and network setup, router configuration, structured
                 office networking, secure data backup, and advanced recovery solutions.
@@ -110,14 +95,11 @@ export default function Services() {
           {/* Service 6 */}
           <article className="service-box reverse">
             <div className="service-image">
-              <img
-                src="/images/cctv.avif"
-                alt="Security and CCTV Services"
-              />
+              <img src="/images/cctv.avif" alt="Security and CCTV Services" />
             </div>
             <div className="service-content">
               <span className="service-tag">Security</span>
-              <h3>Security, CCTV & Peripheral Services</h3>
+              <h3>Security, CCTV &amp; Peripheral Services</h3>
               <p>
                 CCTV and wireless camera installation, antivirus protection, printer
                 setup, and peripheral maintenance designed for secure home and office
@@ -129,14 +111,11 @@ export default function Services() {
           {/* Service 7 */}
           <article className="service-box">
             <div className="service-image">
-              <img
-                src="/images/troubleshooting.jpg"
-                alt="IT Software Services"
-              />
+              <img src="/images/troubleshooting.jpg" alt="IT Software Services" />
             </div>
             <div className="service-content">
               <span className="service-tag highlight">IT Services</span>
-              <h3>IT Software Services & Support</h3>
+              <h3>IT Software Services &amp; Support</h3>
               <p>
                 Comprehensive IT software services including OS management, licensed
                 software deployment, proactive system monitoring, updates,
@@ -144,25 +123,21 @@ export default function Services() {
               </p>
             </div>
           </article>
+
           {/* Service 8 */}
           <article className="service-box reverse">
             <div className="service-image">
-              <img
-                src="/images/antivirus.jpg"
-                alt="Security and CCTV Services"
-              />
+              <img src="/images/antivirus.jpg" alt="Total System Protection" />
             </div>
             <div className="service-content">
               <span className="service-tag">Anti Virus</span>
               <h3>Total System Protection</h3>
               <p>
-                Advanced Protection For Your PC,laptops
-                Maximum Benifits | Biggest Savings | Greatest Offers
-                Only in Shalom System Solutions
+                Advanced protection for your PCs and laptops — maximum benefits,
+                biggest savings, and the greatest offers. Only at Shalom System Solutions.
               </p>
             </div>
           </article>
-          
 
         </div>
       </div>
