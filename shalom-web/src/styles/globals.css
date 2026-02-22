@@ -11,7 +11,9 @@
 }
 
 html {
-  scroll-behavior:auto;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -23,6 +25,7 @@ body {
   color: #4c4c4c;
   min-height: 100vh;
   overflow-x: hidden;
+  max-width: 100%;
   position: relative;
 }
 
@@ -121,7 +124,7 @@ body {
 
 #nav a:hover {
   color: #909090;
-  
+
 }
 
 
@@ -2080,7 +2083,8 @@ footer p {
     gap: 8px;
     text-align: center;
   }
-  .footer-tagline{
+
+  .footer-tagline {
     margin-right: 20px;
   }
 }
@@ -2142,14 +2146,12 @@ footer p {
   .products-search-wrapper {
     display: flex;
     justify-content: center;
-    margin: 30px 0;
+    margin: 30px auto;
     position: sticky;
     top: 90px;
     z-index: 10;
     align-items: center;
-    width: 300px;
-    margin-left: 50px;
-
+    width: 90%;
   }
 
   .products-search-wrapper input {
