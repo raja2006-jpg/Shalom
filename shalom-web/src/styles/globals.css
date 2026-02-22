@@ -1910,7 +1910,9 @@ footer p {
   font-size: 14.5px;
   line-height: 1.6;
   margin-bottom: 16px;
-  color: #333;
+  color: #3338;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 .footer-socials {
@@ -2077,6 +2079,9 @@ footer p {
     flex-direction: column;
     gap: 8px;
     text-align: center;
+  }
+  .footer-tagline{
+    margin-right: 20px;
   }
 }
 
