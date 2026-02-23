@@ -1489,9 +1489,11 @@ footer p {
 
 /* MOBILE */
 @media (max-width: 768px) {
+  
   .reviews-title {
     font-size: 34px;
   }
+  
 
   .review-box {
     width: 280px;

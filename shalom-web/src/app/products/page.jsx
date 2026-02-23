@@ -992,6 +992,9 @@ export default function ProductsPage() {
 
         /* Mobile Responsive */
         @media (max-width: 900px) {
+          .pro-view-toggles{
+            display: none;
+          }
           .pro-hero { padding: 120px 20px 40px; }
           .pro-hero h1 { font-size: 36px; }
           
@@ -1031,6 +1034,7 @@ export default function ProductsPage() {
           .pro-search-box { max-width: 100%; }
           .pro-toolbar-actions { justify-content: space-between; }
         }
+        
       `}</style>
     </>
   );
