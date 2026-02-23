@@ -195,7 +195,7 @@ export default function ProductsPage() {
         <section className="pro-hero">
           <div className="pro-hero-bg"></div>
           <div className="pro-hero-content">
-            <h1>Hardware &amp; Software Solutions</h1>
+            <h1 className="reviews-title">Hardware &amp; Software Solutions</h1>
             <p>Explore our premium catalog of high-performance IT infrastructure and accessories.</p>
           </div>
         </section>
@@ -590,13 +590,14 @@ export default function ProductsPage() {
           align-items: center;
           justify-content: center;
           gap: 8px;
-          padding: 12px 24px;
-          border-radius: 80px;
+          padding: 8px 24px;
+          border-radius: 10px;
           font-weight: 600;
           font-size: 14px;
           cursor: pointer;
           transition: all 0.2s;
           border: 2px solid transparent;
+          width: 100%;
         }
         .pro-btn-sm { padding: 8px 16px; font-size: 13px; }
         .pro-btn-outline {
@@ -968,16 +969,17 @@ export default function ProductsPage() {
           bottom: 32px;
           left: 50%;
           transform: translateX(-50%);
-          background: rgba(15, 23, 42, 0.85);
+          background: rgba(211, 213, 218, 0.35);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
-          color: #fff;
+          color: #5a5a5aff;
+          
           padding: 12px 16px 12px 24px;
-          border-radius: 100px;
+          border-radius: 13px;
           display: flex;
           align-items: center;
           gap: 24px;
-          box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.44);
           z-index: 999;
           animation: pill-slide-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -985,7 +987,7 @@ export default function ProductsPage() {
           from { transform: translate(-50%, 100px); opacity: 0; }
           to { transform: translate(-50%, 0); opacity: 1; }
         }
-        .pro-floating-pill span { font-weight: 500; }
+        .pro-floating-pill span { font-weight: 600; }
         
         /* Utils */
         .d-md-none { display: none; }
