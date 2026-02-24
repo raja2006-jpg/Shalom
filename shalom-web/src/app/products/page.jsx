@@ -169,11 +169,11 @@ export default function ProductsPage() {
       return;
     }
     sessionStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
-    router.push("/");
-    setTimeout(() => {
-      const el = document.getElementById("contact");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 900);
+    router.push("/#contact");
+    // setTimeout(() => {
+    //   const el = document.getElementById("contact");
+    //   if (el) el.scrollIntoView({ behavior: "smooth" });
+    // }, 900);   //not needed//
   }
 
   return (
