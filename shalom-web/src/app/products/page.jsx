@@ -195,7 +195,7 @@ export default function ProductsPage() {
         <section className="pro-hero">
           <div className="pro-hero-bg"></div>
           <div className="pro-hero-content">
-            <h1 className="reviews-title">Hardware &amp; Software Solutions</h1>
+            <h1 className="reviews-title">Our Hardwares &amp; Softwares</h1>
             <p>Explore our premium catalog of high-performance IT infrastructure and accessories.</p>
           </div>
         </section>
@@ -434,7 +434,7 @@ export default function ProductsPage() {
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         .pro-page-wrapper {
-          font-family: 'Inter', sans-serif;
+          font-family: var(--font-primary);
           background-color: #f1f1f1ff;
           min-height: 100vh;
           padding-bottom: 80px;
@@ -1036,6 +1036,7 @@ export default function ProductsPage() {
           .pro-search-box { max-width: 100%; }
           .pro-toolbar-actions { justify-content: space-between; }
         }
+         
         
       `}</style>
     </>

@@ -72,7 +72,7 @@ body {
   color: white;
   font-size: 48px;
   font-weight: 800;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
   box-shadow: 0 10px 30px rgba(143, 188, 54, 0.3);
 }
 
@@ -81,7 +81,7 @@ body {
   font-weight: 800;
   color: #333;
   margin-bottom: 5px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
 }
 
 .login-logo p {
@@ -108,7 +108,7 @@ body {
   border-radius: 14px;
   font-size: 15px;
   transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .input-group input:focus {
@@ -202,7 +202,7 @@ body {
   color: white;
   font-size: 28px;
   font-weight: 800;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
   box-shadow: 0 8px 20px rgba(143, 188, 54, 0.3);
 }
 
@@ -211,7 +211,7 @@ body {
   font-weight: 800;
   color: #333;
   margin-bottom: 2px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
 }
 
 .header-subtitle {
@@ -312,7 +312,7 @@ body {
   font-weight: 800;
   color: #333;
   margin-bottom: 5px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
 }
 
 .stat-info p {
@@ -347,7 +347,7 @@ body {
   font-size: 15px;
   color: #666;
   transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .tab-btn.active {
@@ -408,7 +408,7 @@ body {
   font-size: 22px;
   font-weight: 800;
   color: #333;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
 }
 
 .btn-toggle {
@@ -472,7 +472,7 @@ body {
   border: 2px solid #e5e5e5;
   border-radius: 12px;
   font-size: 15px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   transition: all 0.3s ease;
 }
 
@@ -692,7 +692,7 @@ body {
   font-weight: 700;
   color: #333;
   margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
 }
 
 .product-type {
@@ -721,7 +721,7 @@ body {
   font-size: 22px;
   font-weight: 800;
   color: #8FBC36;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
 }
 
 .product-actions {
@@ -826,7 +826,7 @@ body {
   color: white;
   font-size: 22px;
   font-weight: 800;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
 }
 
 .user-info h4 {
@@ -1076,3 +1076,4 @@ body {
     margin-left:1px;
   }
 }
+

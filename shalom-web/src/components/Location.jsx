@@ -163,8 +163,8 @@ export default function Location() {
 
         .pro-location-section {
           padding: 100px 24px;
-          background-color: #f8fafc;
-          font-family: 'Inter', sans-serif;
+          background-color: #ffffff76;
+          font-family: var(--font-primary);
           position: relative;
           color: #0f172a;
           overflow: hidden;
@@ -237,10 +237,10 @@ export default function Location() {
           margin-bottom: 32px;
         }
         .pro-logo-wrapper {
-          background: #f8fafc;
+          background: #f8fafc00;
           padding: 12px;
           border-radius: 16px;
-          border: 1px solid #e2e8f0;
+          
           display: flex;
           align-items: center;
           justify-content: center;
@@ -512,3 +512,4 @@ export default function Location() {
     </section>
   );
 }
+

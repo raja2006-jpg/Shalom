@@ -164,6 +164,8 @@ export default function Contact() {
             value={productLabel}
             placeholder="Selected Product"
             readOnly
+            onClick={() => (window.location.href = '/products')}
+            style={{cursor:"pointer"}}
           />
 
           <textarea name="cmessage" placeholder="Your Message" />

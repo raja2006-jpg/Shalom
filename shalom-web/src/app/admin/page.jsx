@@ -243,7 +243,7 @@ export default function AdminPage() {
             align-items: center;
             justify-content: center;
             background: #f1f5f9;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-primary);
             padding: 20px;
           }
           .pro-login-card {
@@ -613,7 +613,7 @@ export default function AdminPage() {
           display: flex;
           min-height: 100vh;
           background-color: #f1f5f9;
-          font-family: 'Inter', sans-serif;
+          font-family: var(--font-primary);
           color: #334155;
           overflow-x: hidden;
         }

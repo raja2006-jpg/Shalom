@@ -55,16 +55,16 @@ export default function Footer() {
 
               <div className="pro-social-links">
                 <a href="https://www.instagram.com/shalom_system_solution?igsh=cnFveGdtYXZha3ox" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="pro-social-btn">
-                  <Image src="/images/insta.png" alt="Insta" width={22} height={22} className="pro-social-img" />
+                  <Image src="/images/insta.png" alt="Insta" width={25} height={25} className="pro-social-img" />
                 </a>
                 <a href="https://www.facebook.com/share/1BrxJdMQNn/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="pro-social-btn">
-                  <Image src="/images/facebookss.jpg" alt="FB" width={22} height={22} className="pro-social-img" />
+                  <Image src="/images/facebookss.jpg" alt="FB" width={25} height={25} className="pro-social-img" />
                 </a>
                 <a href="https://www.linkedin.com/in/lijo-daniel-d-71a917327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="pro-social-btn">
-                  <Image src="/images/linkedin.png" alt="LinkedIn" width={22} height={22} className="pro-social-img" />
+                  <Image src="/images/linkedin.png" alt="LinkedIn" width={25} height={25} className="pro-social-img" />
                 </a>
                 <a href="https://wa.me/message/N7HAWY2AXRH2O1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="pro-social-btn">
-                  <Image src="/images/whattsapp.png" alt="WhatsApp" width={22} height={22} className="pro-social-img" />
+                  <Image src="/images/whattsapp.png" alt="WhatsApp" width={25} height={25} className="pro-social-img" />
                 </a>
               </div>
             </div>
@@ -97,14 +97,6 @@ export default function Footer() {
             <div className="pro-footer-col pro-contact-col">
               <h3 className="pro-footer-heading">Contact Details</h3>
 
-              <div className="pro-contact-item">
-                <div className="pro-contact-icon-wrap">
-                  <MdLocationOn className="pro-contact-icon" />
-                </div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Shalom+System+Solutions+Kannampalayam+Sulur" target="_blank" rel="noopener noreferrer" className="pro-contact-text">
-                  Kannampalayam, Sulur,<br />Coimbatore
-                </a>
-              </div>
 
               <div className="pro-contact-item">
                 <div className="pro-contact-icon-wrap">
@@ -121,6 +113,16 @@ export default function Footer() {
                   shalomsystemsolutions1@gmail.com
                 </a>
               </div>
+
+              
+              <div className="pro-contact-item">
+                <div className="pro-contact-icon-wrap">
+                  <MdLocationOn className="pro-contact-icon" />
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Shalom+System+Solutions+Kannampalayam+Sulur" target="_blank" rel="noopener noreferrer" className="pro-contact-text">
+                  Kannampalayam, Sulur ,Coimbatore
+                </a>
+              </div>
             </div>
 
           </div>
@@ -131,11 +133,7 @@ export default function Footer() {
           {/* Bottom Bar */}
           <div className="pro-footer-bottom">
             <span className="pro-copyright">© {new Date().getFullYear()} Shalom System Solutions. All rights reserved.</span>
-            <div className="pro-legal-links">
-              <a href="#">Privacy Policy</a>
-              <span className="pro-dot">•</span>
-              <a href="#">Terms of Service</a>
-            </div>
+           
           </div>
 
         </div>
@@ -150,10 +148,10 @@ export default function Footer() {
         /* Footer Base */
         .pro-footer {
           position: relative;
-          background: rgba(246, 255, 233, 1);
+          background: rgb(248, 255, 239);
           backdrop-filter: blur(10px);
           color: #4c4c4c;
-          font-family: 'Inter', sans-serif;
+          font-family: var(--font-primary);
           padding: 80px 24px 32px;
           margin-top: 80px;
           border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -179,6 +177,7 @@ export default function Footer() {
         }
         .pro-footer-logo-wrap {
           margin-bottom: 24px;
+          margin-left: 80px;
           background: transparent;
           border-radius: 12px;
           padding: 0;
@@ -203,6 +202,7 @@ export default function Footer() {
           display: flex;
           gap: 16px;
           align-items: center;
+          margin-left:70px;
         }
         .pro-social-btn {
           width: 44px;
@@ -236,16 +236,17 @@ export default function Footer() {
           position: relative;
           padding-bottom: 12px;
         }
-        .pro-footer-heading::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 40px;
-          height: 3px;
-          background: #8fbc36;
-          border-radius: 2px;
-        }
+        // .pro-footer-heading::after {
+        //   content: '';
+        //   position: absolute;
+        //   left: 0;
+        //   bottom: 0;
+        //   width: 40px;
+        //   height: 3px;
+        //   background: #8fbc36;
+        //   border-radius: 2px;
+          
+        // }
 
         /* Nav Links */
         .pro-footer-nav {
@@ -358,12 +359,13 @@ export default function Footer() {
           margin-bottom: 32px;
         }
         
-        .pro-footer-bottom {
+        pro-footer-bottom. {
           display: flex;
           justify-content: space-between;
           align-items: center;
           color: #666;
           font-size: 14px;
+          margin-left:33%;
         }
         .pro-legal-links {
           display: flex;
@@ -415,20 +417,39 @@ export default function Footer() {
           transform: translateY(-5px);
           box-shadow: 0 15px 30px -5px rgba(143, 188, 54, 0.5);
         }
+          .pro-copyright{
+          margin-left:0%;
+          font-size:17px;
+          }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
           .pro-footer-grid {
             grid-template-columns: repeat(2, 1fr);
             gap: 40px;
+           
           }
+             .pro-footer-logo-wrap{
+             margin-left: 0;}
+             .pro-social-links{
+             margin-left:0;}
         }
 
         @media (max-width: 768px) {
           .pro-footer-grid {
             grid-template-columns: 1fr;
-            gap: 48px;
+            gap: 20px;
+            .pro-footer-nav{
+            display:none;}
+            .pro-footer-heading{
+            display:none;}
+            .pro-social-links{
+            justify-content: center;
+            margin-left:0;
+            margin-bottom:0;
+           
           }
+            
           .pro-brand-col {
             align-items: center;
             text-align: center;
@@ -454,6 +475,7 @@ export default function Footer() {
             flex-direction: column;
             align-items: center;
             text-align: center;
+            margin-top:0;
           }
           .pro-contact-icon-wrap {
             margin-bottom: -8px;
@@ -481,3 +503,4 @@ export default function Footer() {
     </>
   );
 }
+
