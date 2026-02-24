@@ -42,21 +42,7 @@ export default function Location() {
 
             <div className="pro-contact-list">
 
-              {/* Address */}
-              <div className="pro-contact-item">
-                <div className="pro-icon-box">
-                  <MdLocationOn className="pro-icon" />
-                </div>
-                <div className="pro-contact-details">
-                  <h4>Our Location</h4>
-                  <p>
-                    3rd Jeeva Nagar, Kannampalayam,<br />
-                    Jeevanagar 3rd Street,<br />
-                    Sulur, Coimbatore – 641402,<br />
-                    Tamil Nadu, India
-                  </p>
-                </div>
-              </div>
+             
 
               {/* Phone */}
               <div className="pro-contact-item">
@@ -77,6 +63,22 @@ export default function Location() {
                 <div className="pro-contact-details">
                   <h4>Email Address</h4>
                   <a href="mailto:shalomsystemsolutions1@gmail.com" className="pro-contact-link">shalomsystemsolutions1@gmail.com</a>
+                </div>
+              </div>
+
+               {/* Address */}
+              <div className="pro-contact-item">
+                <div className="pro-icon-box">
+                  <MdLocationOn className="pro-icon" />
+                </div>
+                <div className="pro-contact-details">
+                  <h4>Our Location</h4>
+                  <p>
+                    3rd Jeeva Nagar, Kannampalayam,<br />
+                    Jeevanagar 3rd Street,<br />
+                    Sulur, Coimbatore – 641402,<br />
+                    Tamil Nadu, India
+                  </p>
                 </div>
               </div>
 
