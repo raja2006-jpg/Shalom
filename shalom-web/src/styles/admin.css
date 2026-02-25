@@ -1,5 +1,11 @@
 /* ==================== MODERN ADMIN PANEL CSS ==================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --font-primary: "Sohne", "Soehne", "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Sohne", "Soehne", "Poppins", "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
 
 
 
@@ -10,7 +16,7 @@
 }
 
 body {
-  font-family:"Bebas Neue", sans-serif;
+   font-family: var(--font-primary);
   background: linear-gradient(135deg, #f0f4f8 0%, #d9e7e3 100%);
   min-height: 100vh;
   overflow-x: hidden;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -30,6 +30,8 @@ function SkeletonCard({ viewMode }) {
 }
 
 export default function ProductsPage() {
+  const LONG_PRESS_DURATION = 450;
+  const MOVE_CANCEL_THRESHOLD = 10;
   /* ── Original State ── */
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
@@ -45,6 +47,9 @@ export default function ProductsPage() {
   const [priceRange, setPriceRange] = useState(500000); // Default max price
   const [inStockOnly, setInStockOnly] = useState(false);
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const longPressTimerRef = useRef(null);
+  const touchStartRef = useRef({ x: 0, y: 0 });
+  const suppressClickRef = useRef(false);
 
   const router = useRouter();
 
@@ -138,16 +143,64 @@ export default function ProductsPage() {
     setSelectedProducts([]);
   }
 
+  function toSelectedProduct(product) {
+    return {
+      id: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    };
+  }
+
   function toggleSelect(product) {
-    const exists = selectedProducts.find((p) => p.id === product._id);
-    if (exists) {
-      setSelectedProducts(selectedProducts.filter((p) => p.id !== product._id));
-    } else {
-      setSelectedProducts([
-        ...selectedProducts,
-        { id: product._id, name: product.name, price: product.price, image: product.image },
-      ]);
+    setSelectedProducts((prev) => {
+      const exists = prev.some((p) => p.id === product._id);
+      if (exists) return prev.filter((p) => p.id !== product._id);
+      return [...prev, toSelectedProduct(product)];
+    });
+  }
+
+  function clearLongPressTimer() {
+    if (!longPressTimerRef.current) return;
+    clearTimeout(longPressTimerRef.current);
+    longPressTimerRef.current = null;
+  }
+
+  function handleCardPointerDown(event, product) {
+    if (event.pointerType !== "touch" || selectMode) return;
+    suppressClickRef.current = false;
+    touchStartRef.current = { x: event.clientX, y: event.clientY };
+    clearLongPressTimer();
+
+    longPressTimerRef.current = setTimeout(() => {
+      suppressClickRef.current = true;
+      setSelectMode(true);
+      setSelectedProducts((prev) => {
+        if (prev.some((p) => p.id === product._id)) return prev;
+        return [...prev, toSelectedProduct(product)];
+      });
+    }, LONG_PRESS_DURATION);
+  }
+
+  function handleCardPointerMove(event) {
+    if (!longPressTimerRef.current) return;
+    const movedX = Math.abs(event.clientX - touchStartRef.current.x);
+    const movedY = Math.abs(event.clientY - touchStartRef.current.y);
+    if (movedX > MOVE_CANCEL_THRESHOLD || movedY > MOVE_CANCEL_THRESHOLD) {
+      clearLongPressTimer();
     }
+  }
+
+  function handleCardPointerEnd() {
+    clearLongPressTimer();
+  }
+
+  function handleCardClick(product) {
+    if (suppressClickRef.current) {
+      suppressClickRef.current = false;
+      return;
+    }
+    if (selectMode) toggleSelect(product);
   }
 
   function enquireSingle(product) {
@@ -175,6 +228,14 @@ export default function ProductsPage() {
     //   if (el) el.scrollIntoView({ behavior: "smooth" });
     // }, 900);   //not needed//
   }
+
+  useEffect(() => {
+    return () => {
+      if (!longPressTimerRef.current) return;
+      clearTimeout(longPressTimerRef.current);
+      longPressTimerRef.current = null;
+    };
+  }, []);
 
   return (
     <>
@@ -357,7 +418,12 @@ export default function ProductsPage() {
                   <div
                     key={product._id}
                     className={`pro-card ${isSelected ? 'selected' : ''} ${viewMode === 'list' ? 'pro-card-list' : ''}`}
-                    onClick={() => selectMode && toggleSelect(product)}
+                    onPointerDown={(event) => handleCardPointerDown(event, product)}
+                    onPointerMove={handleCardPointerMove}
+                    onPointerUp={handleCardPointerEnd}
+                    onPointerCancel={handleCardPointerEnd}
+                    onPointerLeave={handleCardPointerEnd}
+                    onClick={() => handleCardClick(product)}
                   >
                     {/* Status Badge */}
                     <div className="pro-badge pro-badge-success">In Stock</div>

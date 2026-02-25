@@ -331,10 +331,10 @@ export default function AdminPage() {
             <button className="pro-icon-btn d-md-none" onClick={() => setMobileMenuOpen(true)}>
               <MenuIcon />
             </button>
-            <div className="pro-search-wrapper d-none d-sm-flex">
+            {/* <div className="pro-search-wrapper d-none d-sm-flex">
               <SearchIcon />
               <input type="text" placeholder="Search..." />
-            </div>
+            </div> */}
           </div>
 
           <div className="pro-header-right">

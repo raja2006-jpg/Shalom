@@ -541,6 +541,30 @@ footer p {
     padding: 0 30px;
     padding-top: 120px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #ecffdf;
+    background-image: 
+      radial-gradient(circle, #dbffcf 3px, transparent 3px);
+    background-size: 20px 20px;
+    background-position: 0 0;
+    background-repeat: repeat;
+    z-index: 0;
+    box-sizing: border-box;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
   }
 
   .hero-content h1 {
@@ -563,6 +587,28 @@ footer p {
 
   .glow-circle {
     display: none;
+  }
+
+  .laptop-wrapper {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/* Mobile Hero Breathing Animation */
+@media (max-width: 768px) {
+  @supports (animation: test) {
+    .hero::before {
+      animation: heroBreathing 2s ease-in-out infinite;
+    }
+  }
+}
+
+@supports (-webkit-appearance: none) {
+  @media (max-width: 768px) {
+    .hero::before {
+      animation: heroBreathing 2s ease-in-out infinite;
+    }
   }
 }
 
@@ -971,6 +1017,18 @@ footer p {
 
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* Hero Mobile Animated Background */
+@keyframes heroBreathing {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.02);
   }
 }
 
