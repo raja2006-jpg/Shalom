@@ -15,7 +15,13 @@ export const metadata = {
   ],
   icons: {
     icon: "/mainlogos.png"            // site logo (favicon)
-  }
+  },
+  link: [
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+    }
+  ]
 };
 
 export default function RootLayout({ children }) {

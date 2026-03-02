@@ -10,7 +10,7 @@ export default function Reviews() {
 
   return (
     <section className="reviews-marquee" id="reviews">
-      <h2 className="reviews-title">Our Customers&rsquo; Reviews</h2>
+      <h2 className="reviews-title">Our Customers Reviews</h2>
 
       <div className="marquee-row left">
         <div className="marquee-track">

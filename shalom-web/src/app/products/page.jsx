@@ -377,7 +377,7 @@ export default function ProductsPage() {
                 onClick={toggleSelectMode}
                 className={`pro-btn ${selectMode ? 'pro-btn-danger' : 'pro-btn-primary-outline'}`}
               >
-                {selectMode ? "Cancel Multi-Select" : "Select Multiple"}
+                {selectMode ? "Cancel" : "Select  Products"}
               </button>
 
               {selectMode && (
