@@ -3,9 +3,9 @@ import "../styles/admin.css";
 
 
 export const metadata = {
-  title: "Shalom | System Solutions",
+  title: "Shalom System Solutions |  Laptop & Desktop Sales in Coimbatore ",
   description:
-    "Shalom System Solutions - Complete Hardware & Software Solutions with High Quality Services",
+    "Shalom System Solutions offers laptop sales, desktop sales, Windows installation, antivirus setup, and hardware upgrades,Complete Software Solutions in one place ",
   keywords: [
     "IT solutions",
     "computer repair",
@@ -14,7 +14,7 @@ export const metadata = {
     "Coimbatore IT services"
   ],
   icons: {
-    icon: "/mainlogos.png"            // site logo (favicon)
+    icon: "/mainlogos.png"            
   },
   link: [
     {

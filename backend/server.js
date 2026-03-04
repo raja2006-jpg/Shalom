@@ -15,7 +15,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://shalomsystems.vercel.app",   // ADD THIS
+      "https://shalomsystemsolutions.com",   // ADD THIS
       "https://shalom-kappa.vercel.app",
       "http://localhost:3000",
       "http://localhost:3001"
