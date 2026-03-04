@@ -13,6 +13,7 @@ export const metadata = {
     "laptop sales",
     "Coimbatore IT services"
   ],
+  
   icons: {
     icon: "/mainlogos.png"            
   },
@@ -21,8 +22,13 @@ export const metadata = {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600&display=swap"
     }
-  ]
+  ],
+  verification:{
+    google:"googlebe987d17fea3a253"
+  }
+  
 };
+
 
 export default function RootLayout({ children }) {
   return (
